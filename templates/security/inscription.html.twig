@@ -13,20 +13,32 @@
 {% block body %}
     <img src="{{ asset('images/mickey-form.png') }}" alt="formulaire en forme de mickey" class="image_mickey">
 
-    <div class='form-mickey'>
+        {% for flash_error in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">
+            {{ flash_error }}
+        </div>
+    {% endfor %}
+
+    {# Affiche les erreurs globales du formulaire (non liées à un champ spécifique) #}
+    {{ form_errors(registrationForm) }}
+
+    {{ form_start(registrationForm) }}
+    <div class="form-mickey">
         <h2>INSCRIPTION !</h2>
-        <form method="post" action="" class="form">
-            <label >Ton identifiant :</label>
-            <input type="text" id="username" name="_username" required autofocus>
-
-            <label for="">Ton adresse mail (pour te joindre) :</label>
-            <input type="text" id="" name="" required>
-
-            <label >Ton mot de passe :</label>
-            <input type="password" id="password" name="_password" required>
+        <div class="form">
+            {{ form_row(registrationForm.username, {
+                label: 'Ton identifiant :'
+            }) }}
+            {{ form_row(registrationForm.email, {
+                label: 'Ton adresse mail (pour te joindre) :'
+            }) }}
+            {{ form_row(registrationForm.plainPassword, {
+                label: 'Ton mot de passe :',
+                attr: {'id': 'password'}
+            }) }}
             <img src="{{ asset('images/eye.png') }}" alt="masquer/afficher le mot de passe" id="eye" class="image_mdp3">
-
-            <button type="submit" class="bouton">Go</button>
-        </form>
+        </div>
+            <button type="submit" class="bouton">Créer</button>    
     </div>
+    {{ form_end(registrationForm) }}
 {% endblock %}

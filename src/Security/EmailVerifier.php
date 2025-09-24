@@ -32,6 +32,12 @@ class EmailVerifier
             'username' => $user->getUsername(),
         ]);
 
+    try {
         $this->mailer->send($email);
+        error_log('Email envoyé avec succès.');
+    } catch (\Exception $e) {
+        // Log des erreurs
+        error_log('Erreur lors de l\'envoi de l\'email : ' . $e->getMessage());
+    }
     }
 }

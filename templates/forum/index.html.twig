@@ -7,40 +7,63 @@
 
 {% block stylesheets %}
 {{ parent() }}
-   <link rel="stylesheet" href="{{ asset('styles/css/forum.css') }}?v=1.0">
+    <link rel="stylesheet" href="{{ asset('styles/css/forum.css') }}?v=1.0">
 {% endblock %}
 
 {% block body %}
     <h1>Bienvenue sur le forum !</h1>
-       <div class='container-forum'>
-            <div class='premier-bloc-forum'>
-                <h2>Catégories</h2>
-                {% for category in categories %}
-                    <h3>{{ category.name }}</h3>
-                {% endfor %}
+    <div class='container-forum'>
+        <!-- Section Catégories -->
+<div class='premier-bloc-forum'>
+    <h2>Catégories</h2>
+
+    <!-- Affichage des catégories directement sous forme de liste -->
+    <ul>
+        {% for category in categories %}
+            <li>
+                <a href="?category_filter={{ category.id }}"
+                   class="{{ category.id == selectedCategoryId ? 'active-category' : '' }}">
+                    {{ category.name }}
+                </a>
+            </li>
+        {% else %}
+            <li>Aucune catégorie disponible.</li>
+        {% endfor %}
+    </ul>
+</div>
+
+        <!-- Section Sujets -->
+        <div class='colonne-container-forum'>
+            <div class='deuxieme-bloc-forum' id="create-subject">
+                <h2 class="sujet">Créer un sujet +</h2>
             </div>
-            <div class='colonne-container-forum'>
-                <div class='deuxieme-bloc-forum' id="create-subject">
-                    <h2>Créer un sujet +</h2>
-                </div>
-                <div class='troisieme-bloc-forum'>
-                        <h2>Sujets : </h2>
-                        {% for sujet in sujets %}
-                            <ul>
-                                <li>{{ sujet.name }}</li>
-                            </ul>     
-                        {% endfor %}
-                </div>
+            <div class='troisieme-bloc-forum'>
+                <h2>Sujets :</h2>
+                <ul>
+                    {% for sujet in sujets %}
+                        <li>
+                            <a href="{{ path('forum_sujet_detail', { id: sujet.id }) }}">
+                            {{ sujet.name }}
+                            </a>
+                        </li>
+                    {% else %}
+                        <li>Aucun sujet trouvé pour cette catégorie.</li>
+                    {% endfor %}
+                </ul>
             </div>
         </div>
-        <div id="modal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span> <!-- Bouton de fermeture -->
-                <h2>Ton titre de sujet : </h2>
-                {{ form_start(form) }}
-                    {{ form_row(form.name) }}
-                    <button type="submit" class="create-btn">Créer</button>
-                {{ form_end(form) }}
-            </div>
+    </div>
+
+    <!-- Formulaire pour créer un sujet -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span> <!-- Bouton de fermeture -->
+            <h2>Ton titre de sujet :</h2>
+            {{ form_start(form) }}
+                {{ form_row(form.name) }}
+                {{ form_row(form.category) }} <!-- Champ de sélection de la catégorie -->
+                <button type="submit" class="create-btn">Créer</button>
+            {{ form_end(form) }}
         </div>
+    </div>
 {% endblock %}

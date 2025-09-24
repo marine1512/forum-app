@@ -11,6 +11,8 @@ services:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
 
+    Symfony\Component\Security\Http\Authenticator\FormLoginAuthenticator:
+        alias: 'security.authenticator.form_login.main'
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
     App\:
@@ -18,5 +20,9 @@ services:
     App\Command\:
         resource: '../src/Command'
         tags: ['console.command']
+
+    App\Security\EmailVerifier:
+        arguments:
+            $mailer: '@mailer.mailer' # Injection correcte du service de mail
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

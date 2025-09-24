@@ -46,7 +46,7 @@ class SecurityControllerAuthenticator extends AbstractLoginFormAuthenticator
      */
     protected function getLoginUrl(Request $request): string
     {
-        return $this->urlGenerator->generate('login');
+        return $this->urlGenerator->generate('app_login');
     }
 
     /**

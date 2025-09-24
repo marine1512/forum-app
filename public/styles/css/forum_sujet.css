@@ -1,0 +1,130 @@
+html, body {
+    height: 100%; 
+    margin: 0; 
+    padding: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+main {
+    font-family: 'Ribeye', sans-serif;
+    text-align: center;
+    margin: 0;
+    box-sizing: border-box;
+    background-image: url('/images/fond_du_site.png');
+    background-size: cover;
+    background-attachment: fixed;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    padding: 20em 3em 3em 3em;
+}
+
+.container-sujet {
+    text-align: start;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 1em auto;
+}
+
+.colonne-container-sujet {
+    display: flex; 
+    flex-direction: column;
+    flex: 1; 
+    height: 100%; 
+    margin-bottom: 20px;
+}
+
+.premier-bloc-sujet, .deuxieme-bloc-sujet, .troisieme-bloc-sujet {
+    width: 100%;
+    background-color: #F5E8E3; 
+    border: 2px solid #AED3EA; 
+    display: flex; 
+    flex-direction: column;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+    flex: 1; 
+    padding: 10px;
+}
+
+.premier-bloc-sujet{
+    position: relative;
+}
+
+.troisieme-bloc-sujet{
+    position: relative;
+}
+.comment-item {
+    list-style: none;
+    margin-bottom: 1em;
+    border-bottom: 3px solid #AED3EA;
+}
+
+
+.comment-item:nth-child(even) {
+    background-color: #e8d9d3; 
+}
+
+.Auteur{
+    font-size: 1.5em;
+    display: flex;
+    justify-content: space-between;
+    color: #5A86A1;
+}
+.date{
+    color: #AED3EA;
+}
+.date p{
+    display: inline-block; /* Nécessaire pour que l'encadrement s'ajuste au texte */
+    padding: 2px 5px; /* Espace entre le texte et l'encadrement */
+    border: 1px solid #AED3EA; /* Bordure autour */
+    border-radius: 5px; /* Coins arrondis (optionnel) */
+    background-color: #FFE893; /* Couleur de fond (optionnel) */
+    color: black; /* Couleur du texte */
+    font-size: 14px; /* Taille du texte (ajuster si besoin) */
+    font-weight: bold; /* Mettre le texte en gras (optionnel) */
+}
+
+#comment-form{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+#comment-input{
+    width: 80%;
+}
+.frozen{
+    position: absolute;
+    width: 8em;
+    right: -3em;
+    bottom: -2em;
+}
+
+.bouton {
+    position: absolute;
+    right: 4em;
+    top: 22em;
+    margin: 0 auto;
+    background-color: #5A86A1;
+    color: white;
+    border: 2px solid black;
+    border-radius: 15px;
+    padding: 1em;
+    font-size: 1em;
+    cursor: pointer !important;
+    width: 12em;
+    z-index: 999;
+}
+
+.bouton2 {
+    margin: 0 auto;
+    background-color: #5A86A1;
+    color: white;
+    border: 2px solid black;
+    border-radius: 15px;
+    padding: 1em;
+    font-size: 1em;
+    cursor: pointer;
+    width: 7em;
+}

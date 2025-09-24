@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ subject.name }}{% endblock %}
+
+{% block stylesheets %}
+{{ parent() }}
+<link rel="stylesheet" href="{{ asset('styles/css/forum_sujet.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    <a href="{{ path('forum') }}"><button class="bouton">Retour au forum</button></a>
+
+       <div class='container-sujet'>
+      <div class='colonne-container-sujet'>
+         <div class='premier-bloc-sujet'>
+            <h2><u>Sujet :</u> {{ subject.name }}</h2>
+            <p><strong>Catégorie :</strong> {{ subject.category.name }}</p>
+         </div>
+         <div class='deuxieme-bloc-sujet'>
+            <ul id="comment-list">
+        {% for comment in comments %}
+            <li class="comment-item">
+                <div class="Auteur">
+                    <p>Pseudo : {{ comment.author }}</p>
+                    <div class="date">
+                        <p>Posté le : {{ comment.date|date('d/m/Y à H:i') }}</p>
+                    </div>
+                </div>
+                <p>{{ comment.text }}</p>
+            </li>
+        {% endfor %}
+            </ul>
+         </div>
+      </div>
+      <div class='troisieme-bloc-sujet'>
+            <h2>Ajouter un commentaire</h2>
+            <form id="comment-form" method="post" action="{{ path('forum_sujet_detail', { id: subject.id }) }}">
+                <textarea id="comment-input" name="text" placeholder="Ajoutez un commentaire..." required></textarea>
+                <button class="bouton2" type="submit">Ajouter</button>
+                            <img class='frozen' src="{{ asset('images/frozen.png') }}" alt="Image de la reine des neiges">
+            </form>
+      </div>
+   </div>
+{% endblock %}

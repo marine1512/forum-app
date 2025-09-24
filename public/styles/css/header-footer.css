@@ -99,7 +99,7 @@ footer {
     }
     nav ul {
         position: fixed;
-        top: 16.4em;
+        top: 16em;
         left: -100%;
         flex-direction: column;
         background-color: #427892;

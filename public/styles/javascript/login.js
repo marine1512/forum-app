@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log("JavaScript chargé !");
 
     // Sélection des éléments HTML
-    const passwordInput = document.getElementById('password');
+    const passwordInput = document.getElementById('registration_form_plainPassword');
     const togglePasswordButton = document.getElementById('eye');
 
     if (passwordInput && togglePasswordButton) {

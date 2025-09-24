@@ -19,10 +19,13 @@ class CategoryFixtures extends Fixture
             'Les parcs',
         ];
 
-        foreach ($categories as $categoryName) {
+        foreach ($categories as $key => $categoryName) {
             $category = new Category;
             $category->setName($categoryName);
             $manager->persist($category);
+
+            // Ajouter une référence pour utilisation dans SujetFixtures
+            $this->addReference('category_' . $key, $category);
         }
 
         $manager->flush();
