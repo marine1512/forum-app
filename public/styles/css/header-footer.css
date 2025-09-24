@@ -3,7 +3,10 @@
     padding: 0;
     font-family: 'Ribeye', sans-serif;
 }
-
+header {
+    position: relative; 
+    z-index: 1000; 
+}
 .logo {
     border: 2px solid transparent;
     border-radius: 15px;
@@ -16,25 +19,20 @@
     padding: 5px;
 }
 
-/* Liens visités : rien à changer ici */
-a:visited {
-    text-decoration: underline;
+
+nav ul a {
     color: black;
     text-transform: uppercase;
 }
 
-/* Éléments <li> actifs ou focus */
-nav li:focus,
-nav li:active {
-    text-decoration: underline;
+
+nav ul a.active {
+    background-color: #FFE893;
     color: black;
-    text-transform: uppercase;
-    border: 2px solid black;
+    border: 2px solid #5A86A1;
     border-radius: 15px;
     padding: 5px;
 }
-
-/* Styles de base du menu principal */
 nav {
     width: 100%;
     z-index: 999;
@@ -51,20 +49,21 @@ nav {
 /* Styles de la liste */
 nav ul {
     display: flex;
+    list-style: none;
     justify-content: space-around;
     white-space: wrap;
     gap: 1em;
 }
 
-nav li {
-    list-style: none;
+nav ul a {
+    text-decoration: none;
     text-transform: uppercase;
     border: 2px solid transparent;
     border-radius: 15px;
     padding: 5px;
 }
 
-nav ul li:hover {
+nav ul a:hover {
     background-color: #FFE893;
     text-decoration: underline;
     color: black;

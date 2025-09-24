@@ -24,9 +24,9 @@ links.forEach((link) => {
     });
 });
 
-document.querySelectorAll('nav li').forEach(item => {
+document.querySelectorAll('nav li a').forEach(item => {
     item.addEventListener('click', () => {
-        document.querySelectorAll('nav li').forEach(el => el.classList.remove('active'));
+        document.querySelectorAll('nav li a').forEach(el => el.classList.remove('active'));
         
         item.classList.add('active');
     });

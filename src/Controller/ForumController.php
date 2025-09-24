@@ -90,6 +90,7 @@ public function showSubject(
             $comment = new Comment();
             $comment->setText($text);
             $comment->setAuthor($this->getUser() ? $this->getUser()->getUserIdentifier() : 'Anonyme'); // Auteur = utilisateur connecté ou "Anonyme"
+            if ($this->getUser()) {$comment->setAuthorUser($this->getUser());}
             $comment->setDate(new \DateTimeImmutable());
             $comment->setSubject($sujet);
 

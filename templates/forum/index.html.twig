@@ -42,6 +42,7 @@
                 <ul>
                     {% for sujet in sujets %}
                         <li>
+                            <img class='icone' src="{{ asset('images/icone-mickey.png') }}" alt="Image de mickey">
                             <a href="{{ path('forum_sujet_detail', { id: sujet.id }) }}">
                             {{ sujet.name }}
                             </a>

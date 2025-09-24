@@ -53,6 +53,7 @@ main {
 
 .troisieme-bloc-sujet{
     position: relative;
+    order: 3;
 }
 .comment-item {
     list-style: none;
@@ -65,24 +66,24 @@ main {
     background-color: #e8d9d3; 
 }
 
-.Auteur{
+.comment-item .Auteur{
     font-size: 1.5em;
     display: flex;
     justify-content: space-between;
     color: #5A86A1;
 }
-.date{
+.comment-item .date{
     color: #AED3EA;
 }
-.date p{
-    display: inline-block; /* Nécessaire pour que l'encadrement s'ajuste au texte */
-    padding: 2px 5px; /* Espace entre le texte et l'encadrement */
-    border: 1px solid #AED3EA; /* Bordure autour */
-    border-radius: 5px; /* Coins arrondis (optionnel) */
-    background-color: #FFE893; /* Couleur de fond (optionnel) */
-    color: black; /* Couleur du texte */
-    font-size: 14px; /* Taille du texte (ajuster si besoin) */
-    font-weight: bold; /* Mettre le texte en gras (optionnel) */
+.comment-item .date p{
+    display: inline-block; 
+    padding: 2px 5px; 
+    border: 1px solid #AED3EA; 
+    border-radius: 5px; 
+    background-color: #FFE893; 
+    color: black; 
+    font-size: 14px; 
+    font-weight: bold; 
 }
 
 #comment-form{
@@ -101,7 +102,7 @@ main {
     bottom: -2em;
 }
 
-.bouton {
+a .bouton-forum {
     position: absolute;
     right: 4em;
     top: 22em;
@@ -127,4 +128,66 @@ main {
     font-size: 1em;
     cursor: pointer;
     width: 7em;
+}
+
+@media screen and (max-width: 1204px){
+    .container-forum {
+        flex-direction: column;
+        padding: 1em;
+    }
+
+}
+
+@media screen and (max-width: 990px) {
+    .container-forum {
+        flex-direction: column;
+        align-items: center;
+        padding: 1em;
+    }
+
+    .troisieme-bloc-sujet{
+        order: -1;
+        margin-bottom: 1em;
+    }
+
+    .frozen{
+        width: 6em;
+        top: -1em;
+        right: -1em;
+    }
+
+    a .bouton-forum{
+        right: 4em;
+        top: 60% !important;
+    }
+
+    .container-sujet h2{
+        width: 76% !important;
+    }
+
+    .comment-item .Auteur {
+        font-size: 1.2em;
+    }
+    .bouton-forum{
+        right: 4em;
+        top: 50%;
+    }
+}
+
+@media screen and (max-width: 740px) {
+
+    .comment-item h2{
+        width: 60% !important;
+    }
+        a .bouton-forum{
+        right: 4em;
+        top: 60% !important;
+    }
+}
+@media screen and (max-width: 712px) {
+
+    a .bouton-forum{
+        right: 4em;
+        top: 60% !important;
+    }
 }

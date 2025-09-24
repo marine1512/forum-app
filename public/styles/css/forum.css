@@ -64,11 +64,6 @@ h2 , h1{
     gap: 2em;
 }
 
-.deuxieme-bloc-forum{
-    background-color: #5A86A1;
-    color: white;
-}
-
 .premier-bloc-forum ul li {
     color: black;
     border: 2px solid transparent;
@@ -78,6 +73,7 @@ h2 , h1{
 .premier-bloc-forum ul li a {
     text-decoration: none;
     font-weight: bold;
+    color: #000;
 }
 .premier-bloc-forum ul li:hover {
     background-color: #FFE893;
@@ -85,6 +81,12 @@ h2 , h1{
     border-radius: 15px;
     padding: 5px;
     width: 100%;
+}
+
+.deuxieme-bloc-forum{
+    order: 2;
+    background-color: #5A86A1;
+    color: white;
 }
 
 .troisieme-bloc-forum ul {
@@ -101,6 +103,11 @@ h2 , h1{
 .troisieme-bloc-forum ul li a {
     color: #000;
     text-decoration: none;
+}
+
+.icone{
+    width: 2em;
+    margin-right: 1em;
 }
 
 
@@ -175,4 +182,32 @@ input, .modal-content select {
     margin-top: 1em;
     border-radius: 4px;
     cursor: pointer;
+}
+
+
+@media screen and (max-width: 992px) {
+    .container-forum{
+        flex-direction: column;
+    }
+    .premier-bloc-forum ul, .troisieme-bloc-forum ul {
+    gap: 0.5em;
+    }
+    .premier-bloc-forum h2{
+        margin-bottom: -1em !important;
+    }
+
+    .troisieme-bloc-forum{
+        align-items: center;
+       justify-content: center;
+    }
+
+      /* NIVEAU 1 : réordonner les blocs frères dans .container-forum */
+  .container-forum { display: flex; flex-direction: column; }
+  .container-forum > .colonne-container-forum { order: -1 !important; } /* passe en premier */
+  .container-forum > .premier-bloc-forum      { order: 0  !important; } /* passe après */
+
+  /* NIVEAU 2 : réordonner à l'intérieur de la colonne */
+  .colonne-container-forum { display: flex; flex-direction: column; }
+  .colonne-container-forum > .deuxieme-bloc-forum  { order: -1 !important; } /* 1er dans la colonne */
+  .colonne-container-forum > .troisieme-bloc-forum { order: 0  !important; } /* ensuite */
 }

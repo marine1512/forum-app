@@ -26,6 +26,10 @@ class Comment
     #[ORM\JoinColumn(nullable: false)]
     private ?Sujet $subject = null;
 
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'comments')]
+    #[ORM\JoinColumn(name: "user_id", referencedColumnName: "id", nullable: true, onDelete: "SET NULL")]
+    private ?User $authorUser = null;
+
     // Getters et setters
     public function getId(): ?int
     {
@@ -74,5 +78,14 @@ class Comment
     {
         $this->subject = $subject;
         return $this;
+    }
+    public function getAuthorUser(): ?User 
+    { 
+        return $this->authorUser; 
+    }
+    public function setAuthorUser(?User $user): self
+     { 
+        $this->authorUser = $user; 
+        return $this; 
     }
 }
