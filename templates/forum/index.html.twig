@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block javascripts %}
+{{ parent() }}
+    <script src="{{ asset('styles/javascript/forum.js') }}" defer></script>
+{% endblock %}
+
+{% block stylesheets %}
+{{ parent() }}
+   <link rel="stylesheet" href="{{ asset('styles/css/forum.css') }}?v=1.0">
+{% endblock %}
+
+{% block body %}
+    <h1>Bienvenue sur le forum !</h1>
+       <div class='container-forum'>
+            <div class='premier-bloc-forum'>
+                <h2>Catégories</h2>
+                {% for category in categories %}
+                    <h3>{{ category.name }}</h3>
+                {% endfor %}
+            </div>
+            <div class='colonne-container-forum'>
+                <div class='deuxieme-bloc-forum' id="create-subject">
+                    <h2>Créer un sujet +</h2>
+                </div>
+                <div class='troisieme-bloc-forum'>
+                        <h2>Sujets : </h2>
+                        {% for sujet in sujets %}
+                            <ul>
+                                <li>{{ sujet.name }}</li>
+                            </ul>     
+                        {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span> <!-- Bouton de fermeture -->
+                <h2>Ton titre de sujet : </h2>
+                {{ form_start(form) }}
+                    {{ form_row(form.name) }}
+                    <button type="submit" class="create-btn">Créer</button>
+                {{ form_end(form) }}
+            </div>
+        </div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block javascripts %}
+{{ parent() }}
+    <script src="{{ asset('styles/javascript/login.js') }}" defer></script>
+{% endblock %}
+
+{% block stylesheets %}
+{{ parent() }}
+   <link rel="stylesheet" href="{{ asset('styles/css/form.css') }}?v=1.0">
+{% endblock %}
+
+{% block body %}
+    <img src="{{ asset('images/mickey-form.png') }}" alt="formulaire en forme de mickey" class="image_mickey">
+
+    <div class='form-mickey'>
+        <h2>INSCRIPTION !</h2>
+        <form method="post" action="" class="form">
+            <label >Ton identifiant :</label>
+            <input type="text" id="username" name="_username" required autofocus>
+
+            <label for="">Ton adresse mail (pour te joindre) :</label>
+            <input type="text" id="" name="" required>
+
+            <label >Ton mot de passe :</label>
+            <input type="password" id="password" name="_password" required>
+            <img src="{{ asset('images/eye.png') }}" alt="masquer/afficher le mot de passe" id="eye" class="image_mdp3">
+
+            <button type="submit" class="bouton">Go</button>
+        </form>
+    </div>
+{% endblock %}

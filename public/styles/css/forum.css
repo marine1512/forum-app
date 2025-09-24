@@ -1,0 +1,130 @@
+html, body {
+    height: 100%; 
+    margin: 0; 
+    padding: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+main {
+    font-family: 'Ribeye', sans-serif;
+    text-align: center;
+    margin: 0;
+    box-sizing: border-box;
+    background-image: url('/images/fond_du_site.png');
+    background-size: cover;
+    background-attachment: fixed;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    padding: 20em 3em 3em 3em;
+}
+
+.container-forum {
+    display: flex;
+    width: 100%;
+    margin: 1em auto;
+    gap: 1em;
+}
+
+.colonne-container-forum {
+    display: flex; 
+    flex-direction: column;
+    margin-bottom: 15px; 
+    flex: 1; 
+    height: 100%; 
+}
+
+.premier-bloc-forum, .deuxieme-bloc-forum, .troisieme-bloc-forum {
+    background-color: #F5E8E3; 
+    border: 2px solid #000; 
+    border-radius: 15px; 
+    display: flex; 
+    flex-direction: column;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+    flex: 1; 
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.deuxieme-bloc-forum {
+    cursor: pointer; 
+}
+h2 {
+    text-decoration: underline;
+}
+h3 {
+    border: 2px solid transparent;
+    border-radius: 15px;
+    padding: 5px;
+    width: fit-content;
+}
+h3:hover {
+    background-color: #FFE893;
+    border: 2px solid #5A86A1;
+    border-radius: 15px;
+    padding: 5px;
+}
+
+/* Style général pour la modale */
+.modal {
+    display: none; /* La modale est cachée par défaut */
+    position: fixed;
+    z-index: 1000; /* Toujours au-dessus */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+}
+
+/* Contenu de la modale */
+.modal-content {
+    position: relative !important;
+    background-color: #AED3EA !important;
+    margin: 15% auto; /* Décalage vertical automatique */
+    padding: 20px;
+    border: 3px solid black !important;
+    width: 55% !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 30px !important;
+}
+
+/* Bouton de fermeture */
+.modal-content .close {
+    position: absolute;
+    right: 1em;
+    width: fit-content;
+    background-color: #FFE893;
+    border: 2px solid #000000;
+    border-radius: 15px;
+    padding: 5px;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.modal-content .close:hover,
+.modal-content .close:focus {
+    color: #000;
+    text-decoration: none;
+}
+
+input {
+    position: relative;
+    border-radius: 15px;
+    padding: 0.5em;
+}
+
+/* Bouton de création */
+.create-btn {
+    background-color: #5A86A1;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 1em;
+    border-radius: 4px;
+    cursor: pointer;
+}

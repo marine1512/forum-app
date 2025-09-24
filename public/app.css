@@ -1,0 +1,10 @@
+body {
+    background-color: skyblue;
+    overflow: hidden;
+}
+
+* {
+    overflow: hidden;
+}
+
+   @import "~bootstrap/scss/bootstrap";
