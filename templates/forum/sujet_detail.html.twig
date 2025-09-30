@@ -9,13 +9,15 @@
 
 {% block body %}
 
-    <a href="{{ path('forum') }}"><button class="bouton-forum">Retour au forum</button></a>
+    <a href="{{ path('forum') }}"><button class="bouton-forum" fill="currentColor">Retour au forum</button></a>
 
        <div class='container-sujet'>
       <div class='colonne-container-sujet'>
          <div class='premier-bloc-sujet'>
             <h2><u>Sujet :</u> {{ subject.name }}</h2>
-            <p><strong>Catégorie :</strong> {{ subject.category.name }}</p>
+            <p class="categorie categorie-{{ subject.category.id }}">
+  <strong>Catégorie :</strong> {{ subject.category.name }}
+</p>
          </div>
          <div class='deuxieme-bloc-sujet'>
             <ul id="comment-list">

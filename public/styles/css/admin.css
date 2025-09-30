@@ -1,0 +1,76 @@
+html, body {
+    height: 100%; 
+    margin: 0; 
+    padding: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+main {
+    font-family: "Indie Flower", cursive, sans-serif;
+    text-align: center;
+    margin: 0;
+    box-sizing: border-box;
+    background-image: url('/images/fond_du_site.png');
+    background-size: cover;
+    background-attachment: fixed;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    padding: 20em 3em 3em 3em;
+}
+
+.container .images{
+    width: 9em;
+}
+
+.admin-dashboard table,
+.admin-dashboard .list-group {
+  background-color: #fff;        /* fond blanc */
+  border-radius: 0.5em;          /* angles arrondis */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* ombre légère */
+  overflow: hidden;              /* garde les coins arrondis */
+}
+
+.admin-dashboard table th,
+.admin-dashboard table td {
+  background-color: #fff;        /* force blanc aussi dans les cellules */
+}
+
+.admin-dashboard .list-group-item {
+  background-color: #fff;
+  border: none;                  /* supprime les bordures grises */
+  border-bottom: 1px solid #eee; /* ligne plus douce */
+}
+
+.admin-dashboard .admin-card {
+  background: #fff;
+  border-radius: .5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,.1);
+  overflow: hidden;
+}
+
+.admin-dashboard .list-group-item {
+  background: #fff;
+  border: none;
+  border-bottom: 1px solid #eee;
+}
+
+.card-body .bouton{
+    background-color: #5A86A1;
+    color: white;
+    border: 2px solid black;
+    border-radius: 15px;
+    padding: 6px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.card{
+    border: 1px solid black !important;
+}
+
+
+.row>*{
+    height: 18em;
+}

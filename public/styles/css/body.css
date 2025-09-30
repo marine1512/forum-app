@@ -6,7 +6,7 @@ html, body {
 }
 
 main {
-    font-family: 'Ribeye', sans-serif;
+    font-family: "Indie Flower", cursive, sans-serif;
     text-align: center;
     margin: 0;
     box-sizing: border-box;
@@ -32,12 +32,37 @@ h2{
 .container {
     display: flex;
     justify-content: space-between; 
-    align-items: center;
+    justify-content: flex-end;
     width: 100%; 
     height: 100%;
-    gap: 20px; 
-    margin-top: 1em;
+    margin-top: -4em;
 }
+
+.image_mickey-container {
+    position: relative; /* référence pour membre-mickey */
+    width: 14em;
+    top: -7em;
+    right: -22em;
+}
+
+.image_mickey {
+  width: 100%;
+  display: block;
+}
+
+.membre-mickey {
+    position: absolute;
+    right: 4em;
+    bottom: 3em;
+}
+.membre-mickey ul li {
+    list-style: none;
+}
+.membre-mickey ul li p{
+    font-family: 'Ribeye', sans-serif;
+    color: white;
+}
+
 
 
 .colonne-container {
@@ -56,6 +81,9 @@ h2{
     flex-direction: column;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
     flex: 1; 
+}
+.bloc p{
+    font-family: 'Ribeye', sans-serif;
 }
 .bloc-fee {
     position: relative;
@@ -77,23 +105,6 @@ h2{
     padding-left: 23%; 
 }
 
-.second-bloc {
-    background-color: #F5E8E3;
-    border: 2px solid #000; 
-    border-radius: 15px; 
-    display: flex; 
-    justify-content: center; 
-    align-items: center;
-    flex-direction: column;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
-    flex: 1; 
-}
-
-.second-bloc ul li {
-    list-style-type: none; 
-    margin-bottom: 1em;
-}
-
 .fee{
     width: 10em;
     position: absolute;
@@ -108,11 +119,15 @@ h2{
     h1{
         width: 24em;
     }
+    .image_mickey-container{
+        top: 0em;
+        right: 0em;
+    }
     .container {
         flex-direction: column;
-        align-items: stretch;
         height: auto; 
         max-width: 646px;
+        margin-top: 0em;
     }
     .colonne-container {
         flex-direction: row;

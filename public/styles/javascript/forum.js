@@ -18,3 +18,12 @@ const modal = document.getElementById("modal");
             modal.style.display = "none";
         }
     });
+
+  document.querySelectorAll('.premier-bloc-forum ul li a').forEach(item => {
+    item.addEventListener('click', () => {
+      document.querySelectorAll('.premier-bloc-forum ul li a')
+        .forEach(el => el.classList.remove('active'));
+      item.classList.add('active');
+      // pas de preventDefault: si la page recharge, Twig re-appliquera l’état actif
+    });
+  });

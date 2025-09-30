@@ -1,19 +1,21 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Ribeye', sans-serif;
+    font-family: "Indie Flower", cursive, sans-serif;
 }
 header {
     position: relative; 
     z-index: 1000; 
 }
-.logo {
+header img {
     border: 2px solid transparent;
     border-radius: 15px;
     padding: 5px;
+    width: 21em;
+    filter: blur(0.5px);
 }
 
-.logo:hover {
+header img:hover {
     border: 2px solid #FFE893;
     border-radius: 15px;
     padding: 5px;
@@ -79,10 +81,31 @@ nav ul a:hover {
 }
 
 /* Zone footer */
-footer {
-    background-color: #5A86A1;
+.footer {
     border-top: 2px dashed black;
+    background-color: #427896;
+    color: #fff;
+    text-align: center;
+    padding: 1em 0;
 }
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+.footer-content p {
+    padding: 2px 5px; 
+    border: 1px solid #AED3EA; 
+    border-radius: 5px; 
+    background-color: #FFE893; 
+    color: black; 
+    font-size: 17px; 
+    font-weight: bold; 
+}
+
 
 /* Rendre le menu responsive avec Media Queries */
 @media screen and (max-width: 1204px) {
@@ -98,7 +121,7 @@ footer {
     }
     nav ul {
         position: fixed;
-        top: 16em;
+        top: 15em;
         left: -100%;
         flex-direction: column;
         background-color: #427892;
@@ -111,10 +134,8 @@ footer {
     }
     nav li {
         padding: 3px 0;
+        margin: 10px;
         font-size: clamp(1rem, 3vw, 1.4rem); /* Texte du menu adapté aux petits écrans */
-    }
-    nav ul li:hover {
-        background-color: #FFE893;
     }
     nav.active ul {
         left: 0;

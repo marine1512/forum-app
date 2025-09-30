@@ -18,18 +18,25 @@
     <h2>Catégories</h2>
 
     <!-- Affichage des catégories directement sous forme de liste -->
-    <ul>
-        {% for category in categories %}
-            <li>
-                <a href="?category_filter={{ category.id }}"
-                   class="{{ category.id == selectedCategoryId ? 'active-category' : '' }}">
-                    {{ category.name }}
-                </a>
-            </li>
-        {% else %}
-            <li>Aucune catégorie disponible.</li>
-        {% endfor %}
-    </ul>
+<ul>
+    {% for category in categories %}
+      {% set isActive = category.id == selectedCategoryId %}
+      <li>
+        <a href="?category_filter={{ category.id }}"
+           class="{{
+     [
+       isActive ? 'active-category',
+       isActive ? 'active',
+       app.request.attributes.get('_route') == 'category' ? 'route-category'
+     ]|filter(v => v)|join(' ')
+   }}">
+          {{ category.name }}
+        </a>
+      </li>
+    {% else %}
+      <li>Aucune catégorie disponible.</li>
+    {% endfor %}
+  </ul>
 </div>
 
         <!-- Section Sujets -->
@@ -40,20 +47,23 @@
             <div class='troisieme-bloc-forum'>
                 <h2>Sujets :</h2>
                 <ul>
-                    {% for sujet in sujets %}
-                        <li>
-                            <img class='icone' src="{{ asset('images/icone-mickey.png') }}" alt="Image de mickey">
-                            <a href="{{ path('forum_sujet_detail', { id: sujet.id }) }}">
+                {% for sujet in sujets %}
+                    <li class="categorie categorie-{{ sujet.category.id }}">
+                        <svg class="icone" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <g>
+                            <path fill="none" d="M0 0h24v24H0z"/>
+                            <path fill="currentColor" d="M18.5 2a4.5 4.5 0 0 1 .883 8.913 8 8 0 1 1-14.765-.001A4.499 4.499 0 0 1 5.5 2a4.5 4.5 0 0 1 4.493 4.254A7.998 7.998 0 0 1 12 6c.693 0 1.365.088 2.006.254A4.5 4.5 0 0 1 18.5 2z"/>
+                        </g>
+                        </svg>
+                        <a href="{{ path('forum_sujet_detail', { id: sujet.id }) }}">
                             {{ sujet.name }}
-                            </a>
-                        </li>
+                        </a>
+                        <span>({{ sujet.comments|length }} {{ sujet.comments|length > 1 ? 'commentaires' : 'commentaire' }})</span>
+                    </li>
                     {% else %}
-                        <li>Aucun sujet trouvé pour cette catégorie.</li>
+                    <li>Aucun sujet trouvé pour cette catégorie.</li>
                     {% endfor %}
                 </ul>
-            </div>
-        </div>
-    </div>
 
     <!-- Formulaire pour créer un sujet -->
     <div id="modal" class="modal">

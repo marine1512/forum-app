@@ -6,7 +6,7 @@ html, body {
 }
 
 main {
-    font-family: 'Ribeye', sans-serif;
+    font-family: "Indie Flower", cursive, sans-serif;
     text-align: center;
     margin: 0;
     box-sizing: border-box;
@@ -130,12 +130,27 @@ a .bouton-forum {
     width: 7em;
 }
 
+/* Styles communs */
+.categorie {
+    background-color: rgb(0 0 0 / 14%);
+    text-shadow: 1px 1px black;
+    width: fit-content;
+    padding: 5px;
+    border-radius: 1em;
+}
+
+/* Couleurs spécifiques */
+.categorie-1 { color: #AED3EA !important; }
+.categorie-2 { color: #FFE893 !important; }
+.categorie-3 { color: #DCB5A6 !important; }
+.categorie-4 { color: #4B7792 !important; }
+.categorie-5 { color: #BA9D36 !important; }
+
 @media screen and (max-width: 1204px){
     .container-forum {
         flex-direction: column;
         padding: 1em;
     }
-
 }
 
 @media screen and (max-width: 990px) {

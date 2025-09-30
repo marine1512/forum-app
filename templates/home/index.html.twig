@@ -7,31 +7,35 @@
 {% endblock %}
 
 {% block body %}
-<h1>Le site de discussion sur le monde du créateur de mickey et du Trading Card Game.</h1>
-   <div class='container'>
+<h1>Forum sur le monde de Mickey</h1>    
+{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+  <div class="image_mickey-container">
+    <img src="{{ asset('images/mickey-form.png') }}" alt="image en forme de mickey" class="image_mickey">
+    <div class="membre-mickey">
+      <ul>
+        <li>
+          <p>Hello ⭐️</p>
+          <p>{{ app.user.username }} !</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+{% endif %}
+
+   <div class='container'>    
       <div class='colonne-container'>
          <div class='bloc'>
-            <h2>Les nouveautés TCG</h2>
+            <h2>Les nouveautés</h2>
             <p>🔄 [NOUVEAU] Rotation: fin des 4 premiers chapitres en tournois - Vos avis ?</p>
             <p>♾️ Infinity Constructed : qui teste ce nouveau format illimité ?</p>
          </div>
          <div class='bloc-fee'>
-            <h2>Les sujets dont tout le monde parlent</h2>
+            <h2>Tout le monde en parle</h2>
             <p>🖤 Classement des meilleurs méchants Disney</p>
             <p>👑 Les princesses Disney classées par popularité</p>
             <p>🏰 Votre attraction préférée à Disneyland Paris</p>
             <img class='fee' src="{{ asset('images/fee_clochette.png') }}" alt="Image de fée clochette">
          </div>
-      </div>
-      <div class='second-bloc'>
-            <h2>Les derniers membres inscrits</h2>
-            <ul>
-               {% for member in last_members %}
-                  <li>⭐ {{ member.username }}</li>
-               {% else %}
-                  <li>Aucun membre récemment inscrit.</li>
-               {% endfor %}
-            </ul>
       </div>
    </div>
 {% endblock %}

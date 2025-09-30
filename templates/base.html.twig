@@ -21,7 +21,7 @@
 <ul>
     {% if is_granted('ROLE_ADMIN') %}
         <li class="admin">
-            <a href="" 
+            <a href="{{ path('admin_dashboard') }}" 
                class="{{ app.request.attributes.get('_route') == 'admin_dashboard' ? 'active' : '' }}">
                 Tableau administrateur
             </a>
@@ -72,8 +72,6 @@
        {% block body %}
         {% endblock %}
     </main>
-<footer>
-<img src="{{ asset('images/Logo_footer.png') }}" alt="Logo du site pour le pied de page">
-    
-</footer>
+{{ render(controller('App\\Controller\\FooterController::index')) }}
+
 </html>

@@ -6,7 +6,7 @@ html, body {
 }
 
 main {
-    font-family: 'Ribeye', sans-serif;
+    font-family: "Indie Flower", cursive, sans-serif;
     text-align: center;
     margin: 0;
     box-sizing: border-box;
@@ -35,20 +35,39 @@ main {
     height: 100%; 
 }
 
-.premier-bloc-forum, .deuxieme-bloc-forum, .troisieme-bloc-forum {
+.premier-bloc-forum {
     background-color: #F5E8E3; 
     border: 2px solid #000; 
     border-radius: 15px; 
     display: flex; 
     flex-direction: column;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
-    flex: 1; 
     margin-bottom: 20px;
     padding: 10px;
+    width: 20%;
 }
-
 .deuxieme-bloc-forum {
+    border: 2px solid #000; 
+    border-radius: 15px; 
+    display: flex; 
+    flex-direction: column;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #5A86A1;
+    color: white;
     cursor: pointer; 
+}
+.troisieme-bloc-forum {
+    background-color: #F5E8E3; 
+    border: 2px solid #000; 
+    border-radius: 15px; 
+    display: flex; 
+    flex-direction: column;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+    margin-bottom: 20px;
+    padding: 10px;
+    position: relative;
 }
 h2 , h1{
     text-decoration: underline;
@@ -75,18 +94,13 @@ h2 , h1{
     font-weight: bold;
     color: #000;
 }
-.premier-bloc-forum ul li:hover {
+.premier-bloc-forum ul li a.active {
+    display: flex;
     background-color: #FFE893;
     border: 2px solid #5A86A1;
     border-radius: 15px;
     padding: 5px;
-    width: 100%;
-}
-
-.deuxieme-bloc-forum{
-    order: 2;
-    background-color: #5A86A1;
-    color: white;
+    justify-content: center;
 }
 
 .troisieme-bloc-forum ul {
@@ -108,6 +122,26 @@ h2 , h1{
 .icone{
     width: 2em;
     margin-right: 1em;
+}
+
+.categorie-1 .icone { color: #AED3EA !important; } 
+.categorie-2 .icone { color: #FFE893 !important; } 
+.categorie-3 .icone { color: #dcb5a6 !important; } 
+.categorie-4 .icone { color: #4b7792 !important; } 
+.categorie-5 .icone { color: #ba9d36 !important; }
+
+
+.categorie span{
+    position: absolute;
+    right: 1em;
+    display: inline-block; 
+    padding: 2px 5px; 
+    border: 1px solid #AED3EA; 
+    border-radius: 5px; 
+    background-color: #FFE893; 
+    color: black; 
+    font-size: 14px; 
+    font-weight: bold; 
 }
 
 
@@ -185,10 +219,13 @@ input, .modal-content select {
 }
 
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 1095px) {
     .container-forum{
         flex-direction: column;
     }
+    .premier-bloc-forum {
+        width: 100%;
+}
     .premier-bloc-forum ul, .troisieme-bloc-forum ul {
     gap: 0.5em;
     }
@@ -201,13 +238,4 @@ input, .modal-content select {
        justify-content: center;
     }
 
-      /* NIVEAU 1 : réordonner les blocs frères dans .container-forum */
-  .container-forum { display: flex; flex-direction: column; }
-  .container-forum > .colonne-container-forum { order: -1 !important; } /* passe en premier */
-  .container-forum > .premier-bloc-forum      { order: 0  !important; } /* passe après */
-
-  /* NIVEAU 2 : réordonner à l'intérieur de la colonne */
-  .colonne-container-forum { display: flex; flex-direction: column; }
-  .colonne-container-forum > .deuxieme-bloc-forum  { order: -1 !important; } /* 1er dans la colonne */
-  .colonne-container-forum > .troisieme-bloc-forum { order: 0  !important; } /* ensuite */
 }
