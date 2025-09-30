@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+{{ parent() }}
+   <link rel="stylesheet" href="{{ asset('styles/css/form.css') }}?v=1.0">
+{% endblock %}
+
+{% block body %}
+    <img src="{{ asset('images/mickey-formulaire.png') }}" alt="formulaire en forme de mickey" class="image_mickey">
+
+    <div class='form-mickey'>
+        <h1>Bonjour !</h1>
+
+        <p>Pour réinitialiser votre mot de passe, veuillez cliquer sur le lien suivant :</p>
+
+        <a href="{{ url('app_reset_password', {token: resetToken.token}) }}">
+            {{ url('app_reset_password', {token: resetToken.token}) }}
+        </a>
+
+        <p>Ce lien expirera dans {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.</p>
+    </div>
+{% endblock %}

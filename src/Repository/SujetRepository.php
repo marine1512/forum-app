@@ -16,6 +16,18 @@ class SujetRepository extends ServiceEntityRepository
         parent::__construct($registry, Sujet::class);
     }
 
+    public function findTopDiscussed(int $limit = 5): array
+{
+    return $this->createQueryBuilder('s')
+        ->leftJoin('s.comments', 'c')        // relation Sujet -> Comment (adapter le nom si besoin)
+        ->addSelect('COUNT(c.id) AS nbComments')
+        ->groupBy('s.id')
+        ->orderBy('nbComments', 'DESC')
+        ->setMaxResults($limit)
+        ->getQuery()
+        ->getResult(); // renvoie des tableaux [0 => Sujet, 'nbComments' => string]
+}
+
     //    /**
     //     * @return Sujet[] Returns an array of Sujet objects
     //     */

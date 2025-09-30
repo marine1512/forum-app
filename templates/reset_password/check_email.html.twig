@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}E-mail de réinitialisation envoyé{% endblock %}
+
+{% block stylesheets %}
+{{ parent() }}
+   <link rel="stylesheet" href="{{ asset('styles/css/form.css') }}?v=1.0">
+{% endblock %}
+
+{% block body %}
+    <img src="{{ asset('images/mickey-formulaire.png') }}" alt="formulaire en forme de mickey" class="image_mickey">
+
+    <div class='form-mickey'>
+        <p>
+        Si un compte correspondant à votre adresse e-mail existe, un message vient de vous être envoyé avec un lien vous permettant de réinitialiser votre mot de passe.
+        Ce lien expirera dans {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.
+        </p>
+        <p>
+            Si vous ne recevez pas d’e-mail, veuillez vérifier votre dossier de courriers indésirables ou
+            <a href="{{ path('app_forgot_password_request') }}">réessayez</a>.
+        </p>
+    </div>
+{% endblock %}

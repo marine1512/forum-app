@@ -63,7 +63,21 @@ h2{
     color: white;
 }
 
-
+.colonne-container p a{
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+.colonne-container .nombre{
+    display: inline-block; 
+    padding: 2px 5px; 
+    border: 1px solid #AED3EA; 
+    border-radius: 5px; 
+    background-color: #FFE893; 
+    color: black; 
+    font-size: 14px; 
+    font-weight: bold; 
+}
 
 .colonne-container {
     display: flex; 
@@ -99,10 +113,9 @@ h2{
 .bloc-fee p{
     margin: auto; 
     font-size: 1.2em;
-    padding: 20px;
+    padding: 11px;
     font-family: 'Ribeye', sans-serif;
     text-align: center; 
-    padding-left: 23%; 
 }
 
 .fee{

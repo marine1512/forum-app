@@ -20,6 +20,11 @@ main {
     padding: 20em 3em 3em 3em;
 }
 
+h1{
+    text-decoration: underline;
+    margin-bottom: 2em;
+}
+
 .container .images{
     width: 9em;
 }
@@ -68,9 +73,4 @@ main {
 
 .card{
     border: 1px solid black !important;
-}
-
-
-.row>*{
-    height: 18em;
 }

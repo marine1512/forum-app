@@ -17,7 +17,7 @@
     <div class='premier-bloc-profil'>
         <h2>Mes informations :</h2>
         <p><strong class="titre">Pseudo : </strong> {{ user.username }}</p>
-        <p><strong class="titre">Email :</strong> {{ user.email }}</p>
+        <p><a href="mailto:{{ user.email }}"><strong class="titre">Email :</strong> {{ user.email }}</a></p>
         <p><strong class="titre">Est ici depuis le :</strong> {{ user.createdAt|date('d/m/Y') }}</p>
     </div>
     <div class='colonne-container-profil'>

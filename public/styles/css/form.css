@@ -39,6 +39,7 @@ main {
     flex-direction: column;
     position: relative;
 }
+
 h2{
     width: fit-content;
     color: white;
@@ -97,6 +98,18 @@ input {
     font-size: 1em;
     cursor: pointer;
     width: 7em;
+}
+
+.bouton2{
+    margin: 0 auto;
+    background-color: #5A86A1;
+    color: white;
+    border: 2px solid black;
+    border-radius: 15px;
+    padding: 1em;
+    font-size: 1em;
+    cursor: pointer;
+    width: 10em;
 }
 a{
     color: black;
