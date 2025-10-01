@@ -10,14 +10,11 @@
 {% block body %}
     <img src="{{ asset('images/mickey-formulaire.png') }}" alt="formulaire en forme de mickey" class="image_mickey">
 
-    <div class='form-mickey'>
+    <div class='form-mickey check_email'>
         <p>
-        Si un compte correspondant à votre adresse e-mail existe, un message vient de vous être envoyé avec un lien vous permettant de réinitialiser votre mot de passe.
-        Ce lien expirera dans {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.
-        </p>
+        Un Email vient d'être envoyé pour ton mot de passe.</p>
         <p>
-            Si vous ne recevez pas d’e-mail, veuillez vérifier votre dossier de courriers indésirables ou
-            <a href="{{ path('app_forgot_password_request') }}">réessayez</a>.
+            Pense à regarder dans tes spam au cas où 😉
         </p>
     </div>
 {% endblock %}

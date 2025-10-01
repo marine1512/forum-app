@@ -96,12 +96,17 @@ h2 , h1{
 }
 .premier-bloc-forum ul li a.active {
     display: flex;
-    background-color: #FFE893;
     border: 2px solid #5A86A1;
     border-radius: 15px;
     padding: 5px;
     justify-content: center;
 }
+/* Couleurs par catégorie */
+.category-1.active { background-color: #AED3EA; } 
+.category-2.active { background-color: #FFE893; } 
+.category-3.active { background-color: #dcb5a6; } 
+.category-4.active { background-color: #4b7792; } 
+.category-5.active { background-color: #FFE893; }
 
 .troisieme-bloc-forum ul {
     list-style: none;
@@ -128,7 +133,8 @@ h2 , h1{
 .categorie-2 .icone { color: #FFE893 !important; } 
 .categorie-3 .icone { color: #dcb5a6 !important; } 
 .categorie-4 .icone { color: #4b7792 !important; } 
-.categorie-5 .icone { color: #ba9d36 !important; }
+.categorie-5 .icone { color: #FFE893 !important; }
+
 
 
 .categorie span{

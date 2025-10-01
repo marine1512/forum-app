@@ -10,15 +10,17 @@
 <h1>Forum sur le monde de Mickey</h1>    
 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
   <div class="image_mickey-container">
-    <img src="{{ asset('images/mickey-form.png') }}" alt="image en forme de mickey" class="image_mickey">
+    <a href="{{ path('profil') }}"><img src="{{ asset('images/mickey-form.png') }}" alt="image en forme de mickey" class="image_mickey">
     <div class="membre-mickey">
       <ul>
         <li>
-          <p>Hello ⭐️</p>
+          <p>Hello</p>
           <p>{{ app.user.username }} !</p>
+          <p>⭐️</p>
         </li>
       </ul>
     </div>
+    </a>
   </div>
 {% endif %}
 
@@ -27,9 +29,13 @@
          <div class='bloc'>
             <h2>Les nouveautés</h2>
             {% for sujet in dernieresNouveautes %}
-               <p>✨ <a href="{{ path('forum_sujet_detail', {id: sujet.id}) }}">
+                 <p>✨ 
+                  {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                     <a href="{{ path('forum_sujet_detail', {id: sujet.id}) }}">{{ sujet.name }}</a>
+                  {% else %}
                      {{ sujet.name }}
-               </a></p>
+                  {% endif %}
+               </p>
             {% else %}
                <p>Aucune nouveauté pour le moment.</p>
             {% endfor %}
@@ -40,9 +46,11 @@
          {% set sujet = row[0] %}
          {% set nb = row.nbComments|default(0) %}
                <p>
-                  <a href="{{ path('forum_sujet_detail', { id: sujet.id }) }}">
-                  {{ sujet.name }}
-                  </a>
+                  {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                     <a href="{{ path('forum_sujet_detail', { id: sujet.id }) }}">{{ sujet.name }}</a>
+                  {% else %}
+                     {{ sujet.name }}
+                  {% endif %}
                   <small class="nombre">({{ nb }} commentaire{{ nb == 1 ? '' : 's' }})</small>
                </p>
       {% else %}

@@ -10,24 +10,28 @@
 <div class="container my-4 admin-dashboard">
   <div class="d-flex justify-content-between align-items-center mb-3">
     <h1 class="h3 m-0">Tous les sujets</h1>
-    <a class="btn btn-primary" href="{{ path('admin_sujets_new') }}">+ Nouveau sujet</a>
-    <a class="btn btn-light" href="{{ path('admin_dashboard') }}">← Retour</a>
+    <a class="bouton" href="{{ path('admin_sujets_new') }}">+ Nouveau sujet</a>
+    <a class="bouton2" href="{{ path('admin_dashboard') }}">← Retour</a>
   </div>
 
   <div class="table-responsive admin-card">
     <table class="table table-sm align-middle mb-0">
-      <thead><tr><th>#</th><th>Nom</th><th>Catégorie</th></tr></thead>
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Catégorie</th>
+        </tr>
+      </thead>
       <tbody>
         {% for s in sujets %}
           <tr>
-            <td>{{ s.id }}</td>
             <td>{{ s.name }}</td>
             <td>{{ s.category ? s.category.name : '—' }}</td>
-            <td class="text-end">
-        <a class="btn btn-sm btn-outline-secondary" href="{{ path('admin_sujets_edit', {id: s.id}) }}">Modifier</a>
+            <td class="text-end d-flex flex-column justify-content-between align-items-center">
+        <a class="bouton3" href="{{ path('admin_sujets_edit', {id: s.id}) }}">Modifier</a>
         <form action="{{ path('admin_sujets_delete', {id: s.id}) }}" method="post" class="d-inline" onsubmit="return confirm('Supprimer ce sujet ?');">
           <input type="hidden" name="_token" value="{{ csrf_token('delete_sujet_' ~ s.id) }}">
-          <button class="btn btn-sm btn-outline-danger">Supprimer</button>
+          <button class="btn btn-danger">Supprimer</button>
         </form>
       </td>
           </tr>

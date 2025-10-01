@@ -5,7 +5,10 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Entity\Category;
 use App\Entity\Sujet;
+use App\Entity\Comment;
 use App\Form\SujetType;
+use App\Form\CategoryType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use App\Repository\UserRepository;
 use App\Repository\CategoryRepository;
 use App\Repository\SujetRepository;
@@ -63,8 +66,6 @@ class AdminController extends AbstractController
         $form = $this->createFormBuilder($user)
             ->add('username')
             ->add('email')
-            // ->add('password') // si tu veux créer un mot de passe ici, gère le hash en service
-            ->add('roles') // si ta propriété est array<string>
             ->getForm();
 
         $form->handleRequest($request);
@@ -76,9 +77,9 @@ class AdminController extends AbstractController
             return $this->redirectToRoute('admin_members');
         }
 
-        return $this->render('admin/form_member.html.twig', [
+        return $this->render('admin/form/form_member.html.twig', [
             'form' => $form->createView(),
-            'title' => 'Nouveau membre',
+            'members' => 'Nouveau membre',
         ]);
     }
 
@@ -88,7 +89,7 @@ class AdminController extends AbstractController
         $form = $this->createFormBuilder($user)
             ->add('username')
             ->add('email')
-            ->add('roles')
+            ->add('password')
             ->getForm();
 
         $form->handleRequest($request);
@@ -98,7 +99,7 @@ class AdminController extends AbstractController
             return $this->redirectToRoute('admin_members');
         }
 
-        return $this->render('admin/form_member.html.twig', [
+        return $this->render('admin/form/form_member.html.twig', [
             'form' => $form->createView(),
             'title' => sprintf('Modifier membre #%d', $user->getId()),
         ]);
@@ -135,10 +136,7 @@ class AdminController extends AbstractController
     public function categoriesNew(Request $request, EntityManagerInterface $em): Response
     {
         $category = new Category();
-
-        $form = $this->createFormBuilder($category)
-            ->add('name')
-            ->getForm();
+        $form = $this->createForm(CategoryType::class, $category);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -148,9 +146,9 @@ class AdminController extends AbstractController
             return $this->redirectToRoute('admin_categories');
         }
 
-        return $this->render('admin/form_category.html.twig', [
+        return $this->render('admin/form/form_category.html.twig', [
             'form' => $form->createView(),
-            'title' => 'Nouvelle catégorie',
+            'name' => 'Nouvelle catégorie',
         ]);
     }
 
@@ -168,9 +166,9 @@ class AdminController extends AbstractController
             return $this->redirectToRoute('admin_categories');
         }
 
-        return $this->render('admin/form_category.html.twig', [
+        return $this->render('admin/form/form_category.html.twig', [
             'form' => $form->createView(),
-            'title' => sprintf('Modifier catégorie #%d', $category->getId()),
+            'name' => sprintf('Modifier catégorie #%d', $category->getId()),
         ]);
     }
 
@@ -215,16 +213,25 @@ class AdminController extends AbstractController
             return $this->redirectToRoute('admin_sujets');
         }
 
-        return $this->render('admin/form_sujet.html.twig', [
+        return $this->render('admin/form/form_sujet.html.twig', [
             'form' => $form->createView(),
-            'title' => 'Nouveau sujet',
+            'name' => 'Nouveau sujet',
         ]);
     }
 
     #[Route('/sujets/{id}/edit', name: 'sujets_edit')]
     public function sujetsEdit(Sujet $sujet, Request $request, EntityManagerInterface $em): Response
     {
-        $form = $this->createForm(SujetType::class, $sujet);
+        $form = $this->createFormBuilder($sujet)
+        ->add('name') // champ texte du Sujet (adapte si ton champ s'appelle autrement)
+        ->add('category', EntityType::class, [
+            'class' => Category::class,       // ✅ pas 'name'
+            'choice_label' => 'name',         // adapte si Category a 'title'/'label' etc.
+            'placeholder' => '— Choisir une catégorie —',
+            'required' => true,               // passe à false si relation nullable
+        ])
+    ->getForm();
+
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -233,9 +240,9 @@ class AdminController extends AbstractController
             return $this->redirectToRoute('admin_sujets');
         }
 
-        return $this->render('admin/form_sujet.html.twig', [
+        return $this->render('admin/form/form_sujet.html.twig', [
             'form' => $form->createView(),
-            'title' => sprintf('Modifier sujet #%d', $sujet->getId()),
+            'name' => sprintf('Modifier sujet #%d', $sujet->getId()),
         ]);
     }
 
@@ -252,4 +259,73 @@ class AdminController extends AbstractController
 
         return $this->redirectToRoute('admin_sujets');
     }
+
+    // ===================================================
+// ===============    COMMENTAIRES    ================
+// ===================================================
+
+#[Route('/comments', name: 'comments')]
+public function comments(CommentRepository $commentRepository, SujetRepository $sujetRepository): Response
+{
+
+    $sujets = $sujetRepository->findAll();
+    $comments = $commentRepository->findBy([], ['date' => 'DESC']); // ou ['id' => 'DESC']
+    return $this->render('admin/comments.html.twig', [
+        'comments' => $comments,
+        'sujets' => $sujets,
+    ]);
+}
+
+#[Route('/comments/{id}/edit', name: 'comments_edit')]
+public function commentsEdit(Comment $comment, Request $request, EntityManagerInterface $em): Response
+{
+    // Si tu as un CommentType, utilise-le :
+    // $form = $this->createForm(CommentType::class, $comment);
+
+    // Sinon, mini-form builder (adapte à tes besoins) :
+    $form = $this->createFormBuilder($comment)
+    ->add('text')
+    ->add('authorUser', EntityType::class, [
+        'class' => User::class,
+        'choice_label' => 'username', // ou 'email' selon ton entité
+        'placeholder' => '— Aucun —',
+        'required' => false,
+    ])
+    ->add('subject', EntityType::class, [
+        'class' => Sujet::class,
+        'choice_label' => 'name', // adapte si ton champ s’appelle autrement
+        'placeholder' => '— Choisir un sujet —',
+        'required' => true,
+    ])
+    ->add('date', null, [
+        'widget' => 'single_text',
+        'required' => true,
+    ])
+    ->getForm();
+
+    $form->handleRequest($request);
+    if ($form->isSubmitted() && $form->isValid()) {
+        $em->flush();
+        $this->addFlash('success', 'Commentaire modifié.');
+        return $this->redirectToRoute('admin_comments');
+    }
+
+    return $this->render('admin/form/form_comment.html.twig', [
+        'form' => $form->createView(),
+        'name' => sprintf('Modifier commentaire #%d', $comment->getId()),
+    ]);
+}
+
+#[Route('/comments/{id}/delete', name: 'comments_delete', methods: ['POST'])]
+public function commentsDelete(Comment $comment, Request $request, EntityManagerInterface $em): Response
+{
+    if ($this->isCsrfTokenValid('delete_comment_'.$comment->getId(), $request->request->get('_token'))) {
+        $em->remove($comment);
+        $em->flush();
+        $this->addFlash('success', 'Commentaire supprimé.');
+    } else {
+        $this->addFlash('error', 'Token CSRF invalide.');
+    }
+    return $this->redirectToRoute('admin_comments');
+}
 }

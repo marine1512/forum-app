@@ -17,11 +17,11 @@
     <img src="{{ asset('images/mickey-formulaire.png') }}" alt="formulaire en forme de mickey" class="image_mickey">
 
     <div class='form-mickey'>    
-    <h2>Réinitialiser votre mot de passe</h2>
+    <h2>Mot de passe oublié ?</h2>
 
     {{ form_start(requestForm) }}
         {{ form_row(requestForm.email, {
-            'label': 'Adresse e-mail'
+            'label': 'Email : '
         }) }}
         <div>
             <small>

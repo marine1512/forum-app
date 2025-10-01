@@ -151,6 +151,9 @@ a .bouton-forum {
         flex-direction: column;
         padding: 1em;
     }
+        .container-sujet h2{
+        width: 76% !important;
+    }
 }
 
 @media screen and (max-width: 990px) {
@@ -173,11 +176,11 @@ a .bouton-forum {
 
     a .bouton-forum{
         right: 4em;
-        top: 60% !important;
+        top: 50% !important;
     }
 
     .container-sujet h2{
-        width: 76% !important;
+        width: 66% !important;
     }
 
     .comment-item .Auteur {
@@ -191,18 +194,18 @@ a .bouton-forum {
 
 @media screen and (max-width: 740px) {
 
-    .comment-item h2{
+    .container-sujet h2{
         width: 60% !important;
     }
         a .bouton-forum{
         right: 4em;
-        top: 60% !important;
+        top: 50% !important;
     }
 }
 @media screen and (max-width: 712px) {
 
     a .bouton-forum{
         right: 4em;
-        top: 60% !important;
+        top: 50% !important;
     }
 }

@@ -15,12 +15,12 @@ class SujetType extends AbstractType
     {
         $builder
             ->add('name', null, [
-                'label' => 'Nom du sujet',
+                'label' => 'Nom du sujet : ',
             ])
             ->add('category', EntityType::class, [
                 'class' => Category::class,
                 'choice_label' => 'name', // Nom affiché dans le choix
-                'label' => 'Catégorie',
+                'label' => 'Catégorie : ',
                 'placeholder' => 'Sélectionnez une catégorie', // Option vide
             ]);
     }

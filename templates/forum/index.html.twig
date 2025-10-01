@@ -23,14 +23,8 @@
       {% set isActive = category.id == selectedCategoryId %}
       <li>
         <a href="?category_filter={{ category.id }}"
-           class="{{
-     [
-       isActive ? 'active-category',
-       isActive ? 'active',
-       app.request.attributes.get('_route') == 'category' ? 'route-category'
-     ]|filter(v => v)|join(' ')
-   }}">
-          {{ category.name }}
+        class="category-{{ category.id }} {{ isActive ? 'active' : '' }}">
+        {{ category.name }}
         </a>
       </li>
     {% else %}

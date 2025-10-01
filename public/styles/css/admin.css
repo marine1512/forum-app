@@ -25,27 +25,80 @@ h1{
     margin-bottom: 2em;
 }
 
+
 .container .images{
     width: 9em;
 }
 
+.bouton{
+    background-color: #5A86A1;
+    text-decoration: none;
+    color: white;
+    border: 2px solid black;
+    border-radius: 15px;
+    padding: 6px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.bouton2{
+    background-color: #FFE893;
+    color: #000;
+    text-decoration: none;
+    border: 2px solid #5A86A1;
+    border-radius: 15px;
+    padding: 6px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.bouton3 {
+    background-color: #d4edfd;
+    text-decoration: none;
+    color: #000000;
+    border: 2px solid black;
+    border-radius: 15px;
+    padding: 6px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.btn-danger {
+    color: #000000 !important;
+    border: 2px solid #000000 !important;
+    border-radius: 15px !important;
+    background-color: #dc354563 !important;
+
+}
+.container a:hover{
+  color: #000;
+}
+
+.form-admin {
+    display: flex; 
+    flex-direction: column;
+    padding: 2em;
+    gap: 1em;
+    width: 300px;
+}
+
 .admin-dashboard table,
 .admin-dashboard .list-group {
-  background-color: #fff;        /* fond blanc */
-  border-radius: 0.5em;          /* angles arrondis */
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* ombre légère */
-  overflow: hidden;              /* garde les coins arrondis */
+  background-color: #fff;        
+  border-radius: 0.5em;         
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
+  overflow: hidden;              
 }
 
 .admin-dashboard table th,
 .admin-dashboard table td {
-  background-color: #fff;        /* force blanc aussi dans les cellules */
+  background-color: #fff;        
 }
 
 .admin-dashboard .list-group-item {
   background-color: #fff;
-  border: none;                  /* supprime les bordures grises */
-  border-bottom: 1px solid #eee; /* ligne plus douce */
+  border: none;                 
+  border-bottom: 1px solid #eee; 
 }
 
 .admin-dashboard .admin-card {
@@ -59,6 +112,10 @@ h1{
   background: #fff;
   border: none;
   border-bottom: 1px solid #eee;
+}
+
+.text-end{
+  gap: 10px;
 }
 
 .card-body .bouton{

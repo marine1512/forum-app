@@ -10,27 +10,33 @@
 <div class="container my-4 admin-dashboard">
   <div class="d-flex justify-content-between align-items-center mb-3">
     <h1 class="h3 m-0">Tous les membres</h1>
-      <a class="btn btn-primary" href="{{ path('admin_members_new') }}">+ Nouveau membre</a>
-    <a class="btn btn-light" href="{{ path('admin_dashboard') }}">← Retour</a>
+      <a class="bouton" href="{{ path('admin_members_new') }}">+ Nouveau membre</a>
+    <a class="bouton2" href="{{ path('admin_dashboard') }}">← Retour</a>
   </div>
 
   <div class="table-responsive admin-card">
     <table class="table table-sm align-middle mb-0">
-      <thead><tr><th>#</th><th>Username</th><th>Email</th><th>Rôles</th></tr></thead>
+      <thead>
+        <tr>
+          <th>Pseudo</th>
+          <th>Email</th>
+          <th>Rôles</th>
+        </tr>
+      </thead>
       <tbody>
         {% for m in members %}
           <tr>
-            <td>{{ m.id }}</td>
+
             <td>{{ m.username }}</td>
             <td>{{ m.email ?? '—' }}</td>
             <td>{{ m.roles|join(', ') }}</td>
-                  <td class="text-end">
-        <a class="btn btn-sm btn-outline-secondary" href="{{ path('admin_members_edit', {id: m.id}) }}">Modifier</a>
-        <form action="{{ path('admin_members_delete', {id: m.id}) }}" method="post" class="d-inline" onsubmit="return confirm('Supprimer ce membre ?');">
-          <input type="hidden" name="_token" value="{{ csrf_token('delete_user_' ~ m.id) }}">
-          <button class="btn btn-sm btn-outline-danger">Supprimer</button>
-        </form>
-      </td>
+            <td class="text-end d-flex flex-column justify-content-between align-items-center">
+              <a class="bouton3" href="{{ path('admin_members_edit', {id: m.id}) }}">Modifier</a>
+              <form action="{{ path('admin_members_delete', {id: m.id}) }}" method="post" class="d-inline" onsubmit="return confirm('Supprimer ce membre ?');">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete_user_' ~ m.id) }}">
+                <button class="btn btn-danger">Supprimer</button>
+              </form>
+            </td>
           </tr>
         {% else %}
           <tr><td colspan="4">Aucun membre.</td></tr>

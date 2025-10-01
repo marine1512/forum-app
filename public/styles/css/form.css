@@ -33,6 +33,24 @@ main {
     position: relative;
     top: 3em;
 }
+
+.check_email{
+    gap: 8em;
+}
+.check_email p{
+    font-size: 2em;
+    color: #5A86A1;
+    width: 58%
+}
+.form-mickey p a{
+    background-color: #FFE893;
+    color: #000;
+    border: 2px solid #5A86A1;
+    border-radius: 15px;
+    padding: 6px;
+    font-size: 1em;
+    cursor: pointer;
+}
 .form-mickey2 {    
     display: flex;
     align-items: center;
@@ -49,7 +67,7 @@ h2{
     padding: 0.5em;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
-.form {
+form {
     display: flex; 
     flex-direction: column;
     padding: 2em;
@@ -66,8 +84,8 @@ input {
 .image_mdp {
     position: absolute;
     width: 3em;
-    top: 15.5em;
-    right: 3em;
+    top: 15.8em;
+    right: 2em;
     cursor: pointer;
 }
 .image_mdp3 {
@@ -75,7 +93,7 @@ input {
     cursor: pointer;
     width: 3em;
     bottom: 5.5em;
-    left: 14em;
+    left: 12em;
 }
 .bouton{
     margin: 0 auto;
@@ -110,7 +128,4 @@ input {
     font-size: 1em;
     cursor: pointer;
     width: 10em;
-}
-a{
-    color: black;
 }
