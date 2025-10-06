@@ -2,6 +2,10 @@
 
 Un projet de forum dédié au personnes fan de Disney développé avec **Symfony** pour pouvoir échanger.
 
+## Connexion
+- identifiant: ElsaQueen
+- mot de passe: Elsa
+
 ## Description
 
 Ce projet est une application de commerce électronique créée avec Symfony 6. Elle permet aux utilisateurs de :
