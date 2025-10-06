@@ -279,21 +279,17 @@ public function comments(CommentRepository $commentRepository, SujetRepository $
 #[Route('/comments/{id}/edit', name: 'comments_edit')]
 public function commentsEdit(Comment $comment, Request $request, EntityManagerInterface $em): Response
 {
-    // Si tu as un CommentType, utilise-le :
-    // $form = $this->createForm(CommentType::class, $comment);
-
-    // Sinon, mini-form builder (adapte à tes besoins) :
     $form = $this->createFormBuilder($comment)
     ->add('text')
     ->add('authorUser', EntityType::class, [
         'class' => User::class,
-        'choice_label' => 'username', // ou 'email' selon ton entité
+        'choice_label' => 'username', 
         'placeholder' => '— Aucun —',
         'required' => false,
     ])
     ->add('subject', EntityType::class, [
         'class' => Sujet::class,
-        'choice_label' => 'name', // adapte si ton champ s’appelle autrement
+        'choice_label' => 'name', 
         'placeholder' => '— Choisir un sujet —',
         'required' => true,
     ])

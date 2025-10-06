@@ -39,7 +39,7 @@ h2{
 }
 
 .image_mickey-container {
-    position: relative; /* référence pour membre-mickey */
+    position: relative; 
     width: 14em;
     top: -7em;
     right: -22em;
@@ -99,6 +99,7 @@ h2{
 }
 .bloc p{
     font-family: 'Ribeye', sans-serif;
+    font-size: 15px;
 }
 .bloc-fee {
     position: relative;
@@ -107,13 +108,12 @@ h2{
     border-radius: 15px; 
     display: flex;
     flex-direction: column;
-
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
     flex: 1; 
 }
 .bloc-fee p{
     margin: auto; 
-    font-size: 1.2em;
+    font-size: 15px;
     padding: 11px;
     font-family: 'Ribeye', sans-serif;
     text-align: center; 
@@ -126,6 +126,11 @@ h2{
     left: -50px;
 }
 
+/* 
+**********************
+Media Queries
+**********************
+*/
 @media screen and (max-width: 1204px) {
     main {
         padding: 20em 1em 1em 1em;

@@ -11,7 +11,6 @@ class SujetFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
-        // Sujets à insérer dans la base
         $sujets = [
             ['name' => 'T’es nouveau ? fait ta présentation', 'category' => 'category_0'],
             ['name' => 'Comment ça va ?', 'category' => 'category_0'],
@@ -34,17 +33,17 @@ class SujetFixtures extends Fixture implements DependentFixtureInterface
             $sujet = new Sujet();
             $sujet->setName($sujetData['name']);
 
-            // Récupérer la référence de la catégorie
-            $category = $this->getReference($sujetData['category'], \App\Entity\Category::class);
-            $sujet->setCategory($category); // Associer la catégorie au sujet
 
-            $manager->persist($sujet); // Prépare l'insertion
+            $category = $this->getReference($sujetData['category'], \App\Entity\Category::class);
+            $sujet->setCategory($category); 
+
+            $manager->persist($sujet); 
         }
 
-        $manager->flush(); // Enregistre en base
+        $manager->flush(); 
     }
 
-    // Indique que CategoryFixtures doit être chargé avant SujetFixtures
+
     public function getDependencies(): array
     {
         return [

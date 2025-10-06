@@ -10,7 +10,6 @@ class CategoryFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        // Liste des catégories à insérer
         $categories = [
             'Présentation',
             'Actualité',
@@ -24,7 +23,6 @@ class CategoryFixtures extends Fixture
             $category->setName($categoryName);
             $manager->persist($category);
 
-            // Ajouter une référence pour utilisation dans SujetFixtures
             $this->addReference('category_' . $key, $category);
         }
 

@@ -20,7 +20,12 @@ main {
     padding: 20em 3em 3em 3em;
 }
 
-h1{
+/* 
+**********************
+Style pour l'affichage de la page principale et des boutons
+**********************
+*/
+.container h1{
     text-decoration: underline;
     margin-bottom: 2em;
 }
@@ -68,11 +73,31 @@ h1{
     border: 2px solid #000000 !important;
     border-radius: 15px !important;
     background-color: #dc354563 !important;
-
 }
+
 .container a:hover{
   color: #000;
 }
+
+.card-body .bouton{
+    background-color: #5A86A1;
+    color: white;
+    border: 2px solid black;
+    border-radius: 15px;
+    padding: 6px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.card{
+    border: 1px solid black !important;
+}
+
+/* 
+**********************
+Style pour les tableaux
+**********************
+*/
 
 .form-admin {
     display: flex; 
@@ -80,6 +105,10 @@ h1{
     padding: 2em;
     gap: 1em;
     width: 300px;
+}
+
+.text-end{
+  gap: 10px;
 }
 
 .admin-dashboard table,
@@ -112,22 +141,4 @@ h1{
   background: #fff;
   border: none;
   border-bottom: 1px solid #eee;
-}
-
-.text-end{
-  gap: 10px;
-}
-
-.card-body .bouton{
-    background-color: #5A86A1;
-    color: white;
-    border: 2px solid black;
-    border-radius: 15px;
-    padding: 6px;
-    font-size: 1em;
-    cursor: pointer;
-}
-
-.card{
-    border: 1px solid black !important;
 }

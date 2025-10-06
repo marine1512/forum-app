@@ -50,18 +50,16 @@ class CreateAdminCommand extends Command
             return Command::FAILURE;
         }
 
-        // Vérifier si l'utilisateur existe déjà
         $existingUser = $this->entityManager->getRepository(User::class)->findOneBy(['email' => $email]);
         if ($existingUser) {
             $io->error('Un utilisateur avec cet email existe déjà.');
             return Command::FAILURE;
         }
 
-        // Créer un nouvel utilisateur administrateur
         $user = new User();
         $user->setUsername($username)
             ->setEmail($email)
-            ->setRoles(['ROLE_ADMIN']) // Associer le rôle ADMIN à l'utilisateur
+            ->setRoles(['ROLE_ADMIN'])
             ->setPassword($this->passwordHasher->hashPassword($user, $password))
             ->setIsActive(true)
             ->setIsVerified(true);

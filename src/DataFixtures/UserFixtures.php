@@ -18,7 +18,6 @@ class UserFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
-        // Liste des utilisateurs à insérer
         $users = [
             [
                 'username' => 'ElsaQueen',
@@ -40,7 +39,6 @@ class UserFixtures extends Fixture
             ],
         ];
 
-        // Insertion des utilisateurs
         foreach ($users as $userData) {
             $user = new User();
             $user->setUsername($userData['username']);
@@ -50,14 +48,12 @@ class UserFixtures extends Fixture
             $user->setIsActive($userData['is_active']);
             $user->setEmailVerificationToken($userData['email_verification_token']);
 
-            // Hashage du mot de passe avec le service de hachage
             $hashedPassword = $this->passwordHasher->hashPassword($user, $userData['password']);
             $user->setPassword($hashedPassword);
 
             $manager->persist($user);
         }
 
-        // Enregistrement en base
         $manager->flush();
     }
 }

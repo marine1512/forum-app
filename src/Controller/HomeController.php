@@ -21,9 +21,9 @@ class HomeController extends AbstractController
 
         $lastMembers = $userRepository->findBy([], ['id' => 'DESC'], 3);
         $dernieresNouveautes = $entityManager->getRepository(\App\Entity\Sujet::class)
-            ->findBy([], ['createdAt' => 'DESC'], 2); // trie par date desc, limite à 2
+            ->findBy([], ['createdAt' => 'DESC'], 2); 
 
-        $topDiscussed = $repo->findTopDiscussed(5); // top 5 par nombre de commentaires
+        $topDiscussed = $repo->findTopDiscussed(5); 
 
 
         return $this->render('home/index.html.twig', [

@@ -20,6 +20,7 @@ main {
     padding: 20em 3em 3em 3em;
 }
 
+
 h1, .container-profil h2{
     text-decoration: underline;
     margin-bottom: 1em;
@@ -81,6 +82,12 @@ h1, .container-profil h2{
     font-size: 14px; 
     font-weight: bold; 
 }
+
+/* 
+**********************
+Media Queries
+**********************
+*/
 @media screen and (max-width: 1204px) {
     .container-profil {
         flex-direction: column;

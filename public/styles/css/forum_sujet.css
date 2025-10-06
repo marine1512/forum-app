@@ -146,6 +146,11 @@ a .bouton-forum {
 .categorie-4 { color: #4B7792 !important; }
 .categorie-5 { color: #BA9D36 !important; }
 
+/* 
+**********************
+Media Queries
+**********************
+*/
 @media screen and (max-width: 1204px){
     .container-forum {
         flex-direction: column;

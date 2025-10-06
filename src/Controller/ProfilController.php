@@ -17,7 +17,6 @@ class ProfilController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
 
-        // Récupère les commentaires liés via authorUser
         $comments = $commentRepository->findBy(
             ['authorUser' => $user],
             ['date' => 'DESC']

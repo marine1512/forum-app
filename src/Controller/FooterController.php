@@ -12,7 +12,7 @@ class FooterController extends AbstractController
     #[Route('/footer', name: 'footer')]
     public function index(UserRepository $userRepository): Response
     {
-        // Compter le nombre total de membres
+
         $nbMembers = $userRepository->count([]);
 
         return $this->render('footer.html.twig', [

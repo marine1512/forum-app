@@ -50,14 +50,12 @@ class CreateUserCommand extends Command
             return Command::FAILURE;
         }
 
-        // Vérifier si l'utilisateur existe déjà
         $existingUser = $this->entityManager->getRepository(User::class)->findOneBy(['email' => $email]);
         if ($existingUser) {
             $io->error('Un utilisateur avec cet email existe déjà.');
             return Command::FAILURE;
         }
 
-        // Créer un nouvel utilisateur 
         $user = new User();
         $user->setUsername($username)
             ->setEmail($email)

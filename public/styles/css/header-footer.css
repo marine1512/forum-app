@@ -21,20 +21,11 @@ header img:hover {
     padding: 5px;
 }
 
-
-nav ul a {
-    color: black;
-    text-transform: uppercase;
-}
-
-
-nav ul a.active {
-    background-color: #FFE893;
-    color: black;
-    border: 2px solid #5A86A1;
-    border-radius: 15px;
-    padding: 5px;
-}
+/* 
+**********************
+Styles de la liste 
+**********************
+*/
 nav {
     width: 100%;
     z-index: 999;
@@ -48,7 +39,6 @@ nav {
     padding: 10px;
 }
 
-/* Styles de la liste */
 nav ul {
     display: flex;
     list-style: none;
@@ -61,6 +51,15 @@ nav ul a {
     text-decoration: none;
     text-transform: uppercase;
     border: 2px solid transparent;
+    border-radius: 15px;
+    padding: 5px;
+    color: black;
+}
+
+nav ul a.active {
+    background-color: #FFE893;
+    color: black;
+    border: 2px solid #5A86A1;
     border-radius: 15px;
     padding: 5px;
 }
@@ -78,9 +77,22 @@ nav ul a:hover {
     cursor: pointer;
     display: none;
     font-size: 4em;
+    border: 2px solid transparent;
+    border-radius: 15px;
+    padding: 5px;
 }
 
-/* Zone footer */
+#icon:hover{
+    border: 2px solid #FFE893;
+    border-radius: 15px;
+    padding: 5px;
+}
+
+/* 
+**********************
+Styles du Footer
+**********************
+*/
 .footer {
     border-top: 2px dashed black;
     background-color: #427896;
@@ -107,18 +119,12 @@ nav ul a:hover {
 }
 
 
-/* Rendre le menu responsive avec Media Queries */
+/* 
+**********************
+Media Queries
+**********************
+*/
 @media screen and (max-width: 1204px) {
-    #icon {
-        display: block;
-    }
-    #icon:before {
-        content: "\2630";
-        transition: opacity 0.6s ease-in-out;
-    }
-    .active #icon:before {
-        content: "\2715";
-    }
     nav ul {
         position: fixed;
         top: 15em;
@@ -135,9 +141,19 @@ nav ul a:hover {
     nav li {
         padding: 3px 0;
         margin: 10px;
-        font-size: clamp(1rem, 3vw, 1.4rem); /* Texte du menu adapté aux petits écrans */
+        font-size: clamp(1rem, 3vw, 1.4rem);
     }
     nav.active ul {
         left: 0;
+    }
+    #icon {
+        display: block;
+    }
+    #icon:before {
+        content: "\2630";
+        transition: opacity 0.6s ease-in-out;
+    }
+    .active #icon:before {
+        content: "\2715";
     }
 }

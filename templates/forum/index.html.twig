@@ -13,27 +13,23 @@
 {% block body %}
     <h1>Bienvenue sur le forum !</h1>
     <div class='container-forum'>
-        <!-- Section Catégories -->
-<div class='premier-bloc-forum'>
-    <h2>Catégories</h2>
+        <div class='premier-bloc-forum'>
+            <h2>Catégories</h2>
+            <ul>
+                {% for category in categories %}
+                {% set isActive = category.id == selectedCategoryId %}
+                <li>
+                    <a href="?category_filter={{ category.id }}"
+                    class="category-{{ category.id }} {{ isActive ? 'active' : '' }}">
+                    {{ category.name }}
+                    </a>
+                </li>
+                {% else %}
+                <li>Aucune catégorie disponible.</li>
+                {% endfor %}
+            </ul>
+        </div>
 
-    <!-- Affichage des catégories directement sous forme de liste -->
-<ul>
-    {% for category in categories %}
-      {% set isActive = category.id == selectedCategoryId %}
-      <li>
-        <a href="?category_filter={{ category.id }}"
-        class="category-{{ category.id }} {{ isActive ? 'active' : '' }}">
-        {{ category.name }}
-        </a>
-      </li>
-    {% else %}
-      <li>Aucune catégorie disponible.</li>
-    {% endfor %}
-  </ul>
-</div>
-
-        <!-- Section Sujets -->
         <div class='colonne-container-forum'>
             <div class='deuxieme-bloc-forum' id="create-subject">
                 <h2 class="sujet">Créer un sujet +</h2>
@@ -59,7 +55,6 @@
                     {% endfor %}
                 </ul>
 
-    <!-- Formulaire pour créer un sujet -->
     <div id="modal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span> <!-- Bouton de fermeture -->
