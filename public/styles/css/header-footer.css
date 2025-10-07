@@ -3,11 +3,15 @@
     padding: 0;
     font-family: "Indie Flower", cursive, sans-serif;
 }
-header {
+
+html, body {
+  overflow-x: hidden;     /* ✅ pas de scroll horizontal */
+}
+.header {
     position: relative; 
     z-index: 1000; 
 }
-header img {
+.header img {
     border: 2px solid transparent;
     border-radius: 15px;
     padding: 5px;
@@ -15,7 +19,7 @@ header img {
     filter: blur(0.5px);
 }
 
-header img:hover {
+.header img:hover {
     border: 2px solid #FFE893;
     border-radius: 15px;
     padding: 5px;
@@ -27,6 +31,21 @@ Styles de la liste
 **********************
 */
 nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;               /* ✅ empêche le dépassement */
+  width: auto;            /* ✅ évite le débordement lié au 100vw */
+  z-index: 999;
+  background-color: #AED3EA;
+  border-bottom: 2px dashed black;
+  display: flex;
+  justify-content: space-between; /* ✅ mieux pour logo + menu */
+  align-items: center;
+  padding: 10px 20px;
+  overflow-x: hidden;     /* ✅ évite dépassement interne */
+  box-sizing: border-box; /* ✅ padding ne gonfle plus la largeur */
+
     width: 100%;
     z-index: 999;
     position: fixed;
