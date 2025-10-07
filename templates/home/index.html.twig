@@ -6,6 +6,14 @@
    <link rel="stylesheet" href="{{ asset('styles/css/body.css') }}?v=1.0">
 {% endblock %}
 
+{% block body_attributes %}
+  data-controller="loader"
+  data-loader-timeout-value="10000"   {# 10 secondes #}
+
+{% endblock %}
+
+
+
 {% block body %}
 <h1>Forum sur le monde de Mickey</h1>    
 {% if is_granted('IS_AUTHENTICATED_FULLY') %}

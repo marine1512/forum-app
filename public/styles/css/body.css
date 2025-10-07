@@ -178,3 +178,68 @@ Media Queries
         left: -1em;
     }
 }
+
+:root {
+  --loader-bg: rgba(18, 18, 20, 0.55); /* overlay */
+  --spinner-size: 64px;
+  --spinner-color: #4F46E5;            /* indigo */
+  --spinner-track: rgba(255,255,255,.25);
+}
+
+.loader-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--loader-bg);
+  display: grid;
+  place-items: center;
+  z-index: 9999;
+  transition: opacity .2s ease;
+  opacity: 1;
+}
+.loader-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.spinner {
+  display: grid;
+  place-items: center;
+  gap: .75rem;
+}
+
+.spinner-svg {
+  width: var(--spinner-size);
+  height: var(--spinner-size);
+}
+
+.spinner-track {
+  stroke: var(--spinner-track);
+}
+
+.spinner-head {
+  stroke: var(--spinner-color);
+  stroke-dasharray: 120;
+  stroke-dashoffset: 60;
+  animation: spin 1.2s linear infinite, dash 1.2s ease-in-out infinite;
+}
+
+.spinner-label {
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: .02em;
+}
+
+/* Animations */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes dash {
+  0%   { stroke-dashoffset: 120; }
+  50%  { stroke-dashoffset: 30;  }
+  100% { stroke-dashoffset: 120; }
+}
+
+/* Accessibilité : réduire l’animation si l’utilisateur préfère moins de mouvements */
+@media (prefers-reduced-motion: reduce) {
+  .spinner-head { animation: spin 1.5s linear infinite; }
+}

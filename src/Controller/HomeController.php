@@ -11,7 +11,7 @@ use App\Entity\Sujet;
 
 class HomeController extends AbstractController
 {
-    #[Route('/', name: 'home')]
+    #[Route('/home', name: 'home')]
     public function index(UserRepository $userRepository, \Doctrine\ORM\EntityManagerInterface $entityManager): Response
     {
         $repo = $entityManager->getRepository(Sujet::class);
