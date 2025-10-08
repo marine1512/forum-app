@@ -16,15 +16,14 @@ main {
     display: flex;
     width: 100%;
     flex-direction: column;
-    align-items: center;
-    padding: 20em 3em 3em 3em;
+    padding: 19em 0em 6em 0em;
 }
 
 .container-sujet {
     text-align: start;
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 80%;
     margin: 1em auto;
 }
 
@@ -47,9 +46,6 @@ main {
     padding: 10px;
 }
 
-.premier-bloc-sujet{
-    position: relative;
-}
 
 .troisieme-bloc-sujet{
     position: relative;
@@ -103,10 +99,6 @@ main {
 }
 
 a .bouton-forum {
-    position: absolute;
-    right: 4em;
-    top: 22em;
-    margin: 0 auto;
     background-color: #5A86A1;
     color: white;
     border: 2px solid black;
@@ -179,15 +171,6 @@ Media Queries
         right: -1em;
     }
 
-    a .bouton-forum{
-        right: 4em;
-        top: 50% !important;
-    }
-
-    .container-sujet h2{
-        width: 66% !important;
-    }
-
     .comment-item .Auteur {
         font-size: 1.2em;
     }
@@ -197,20 +180,4 @@ Media Queries
     }
 }
 
-@media screen and (max-width: 740px) {
 
-    .container-sujet h2{
-        width: 60% !important;
-    }
-        a .bouton-forum{
-        right: 4em;
-        top: 50% !important;
-    }
-}
-@media screen and (max-width: 712px) {
-
-    a .bouton-forum{
-        right: 4em;
-        top: 50% !important;
-    }
-}

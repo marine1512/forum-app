@@ -4,7 +4,8 @@ html, body {
     margin: 0; 
     padding: 0;
     transition: opacity 0.5s ease-in-out;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 main {
@@ -16,10 +17,10 @@ main {
     background-size: cover;
     background-attachment: fixed;
     display: flex;
-    width: 100%;
+    min-height: 83vh;
     flex-direction: column;
     align-items: center;
-    padding: 20em 3em 3em 3em;
+    padding: 19em 0em 6em 0em;
 }
 
 
@@ -30,8 +31,8 @@ h1, .container-profil h2{
 
 .container-profil {
     display: flex;
-    width: 100%;
-    margin: 1em auto;
+    width: 80%;
+    margin: 7em auto;
     gap: 1em;
 }
 .container-profil .images{
