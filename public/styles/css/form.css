@@ -21,13 +21,15 @@ main {
     height: 100%;
     flex-direction: column;
     align-items: center;
-    padding: 32em 0em 11em 0em;
+    padding: 46em 0em 24em 0em;
 
 
 }
 
 .image_mickey {
-    width: 65em;
+    width: 100%;
+    max-width: 65em; 
+    height: auto;
     position: absolute;
 }
 .form-mickey {    
@@ -36,6 +38,11 @@ main {
     align-items: center;
     position: relative;
     bottom:-3em;
+    z-index: 1;        
+    padding: 2em;
+    border-radius: 1em;
+    max-width: 600px;
+    width: 90%;
 }
 
 .check_email{
@@ -64,7 +71,8 @@ main {
     bottom:-3em;
 }
 
-h2{
+.form-mickey h2, .form-mickey2 h2{
+    white-space: nowrap; 
     width: fit-content;
     color: white;
     background-color: #5A86A1;
@@ -91,16 +99,16 @@ input {
 .image_mdp {
     position: absolute;
     width: 3em;
-    top: 15.8em;
-    right: 2em;
+    top: 17.8em;
+    right: 12em;
     cursor: pointer;
 }
 .image_mdp3 {
     position: absolute;
     cursor: pointer;
     width: 3em;
-    bottom: 5.7em;
-    left: 10em;
+    bottom: 7.7em;
+    left: 9em;
 }
 .bouton{
     margin: 17px auto;
