@@ -115,6 +115,7 @@ Styles du Footer
 **********************
 */
 .footer {
+    width: 100%;
     border-top: 2px dashed black;
     background-color: #427896;
     color: #fff;
