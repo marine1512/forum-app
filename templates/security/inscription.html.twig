@@ -10,15 +10,14 @@
    <link rel="stylesheet" href="{{ asset('styles/css/form.css') }}?v=1.0">
 {% endblock %}
 
-{% block body %}
-    <img src="{{ asset('images/mickey-formulaire.png') }}" alt="formulaire en forme de mickey" class="image_mickey">
-
-        {% for flash_error in app.flashes('verify_email_error') %}
+{% block body %}       
+    {% for flash_error in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">
-            {{ flash_error }}
+        {{ flash_error }}
         </div>
     {% endfor %}
-
+<div class="mickey">
+    <img src="{{ asset('images/mickey-formulaire.png') }}" alt="formulaire en forme de mickey" class="image_mickey">
     {# Affiche les erreurs globales du formulaire (non liées à un champ spécifique) #}
     {{ form_errors(registrationForm) }}
 
@@ -41,4 +40,5 @@
             <button type="submit" class="bouton">Créer</button>    
     </div>
     {{ form_end(registrationForm) }}
+</div>
 {% endblock %}

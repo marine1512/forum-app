@@ -91,6 +91,7 @@ Style pour l'affichage de la page principale et des boutons
 
 .card{
     border: 1px solid black !important;
+    background-color: #F5E8E3 !important; 
 }
 
 .admin-cards{
@@ -106,7 +107,6 @@ Style pour les tableaux
 .form-admin {
     display: flex; 
     flex-direction: column;
-    padding: 2em;
     gap: 1em;
     width: 300px;
 }
@@ -117,7 +117,7 @@ Style pour les tableaux
 
 .admin-dashboard table,
 .admin-dashboard .list-group {
-  background-color: #fff;        
+  background-color: #F5E8E3;        
   border-radius: 0.5em;         
   box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
   overflow: hidden;              
@@ -125,24 +125,24 @@ Style pour les tableaux
 
 .admin-dashboard table th,
 .admin-dashboard table td {
-  background-color: #fff;        
+  background-color: #F5E8E3;        
 }
 
 .admin-dashboard .list-group-item {
-  background-color: #fff;
+  background-color: #F5E8E3;
   border: none;                 
   border-bottom: 1px solid #eee; 
 }
 
 .admin-dashboard .admin-card {
-  background: #fff;
+  background: #F5E8E3;
   border-radius: .5rem;
   box-shadow: 0 2px 8px rgba(0,0,0,.1);
   overflow: hidden;
 }
 
 .admin-dashboard .list-group-item {
-  background: #fff;
+  background: #F5E8E3;
   border: none;
   border-bottom: 1px solid #eee;
 }

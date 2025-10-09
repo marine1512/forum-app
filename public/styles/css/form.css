@@ -1,146 +1,140 @@
-*, *::before, *::after { box-sizing: border-box; }
-
-html, body {
-    height: 100%;
-    margin: 0; 
-    padding: 0;
-    overflow-x: clip;
+/* 0) Allège le main : tes paddings géants cassent le responsive */
+main{
+  /* le reste inchangé */
+  background-attachment: scroll;   /* mieux sur mobile */
+  min-height: 100vh;
+    padding: 17rem 0rem 0rem 0rem;
+      background-image: url('/images/fond_du_site.png');
+    background-size: cover;              /* à la place de 46em/24em */
 }
 
-main {
-    font-family: "Indie Flower", cursive, sans-serif;
-    text-align: center;
-    margin: 0;
-    box-sizing: border-box;
-    background-image: url('/images/fond_du_site.png');
-    background-size: cover;
-    background-attachment: fixed;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    flex-direction: column;
-    align-items: center;
-    padding: 46em 0em 24em 0em;
-
-
+/* 1) Conteneur image + overlay */
+.mickey{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: min(100%, 65em);
+  margin: 0 auto;
+}
+.image_mickey{
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
-.image_mickey {
-    width: 100%;
-    max-width: 65em; 
-    height: auto;
-    position: absolute;
-}
-.form-mickey {    
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    bottom:-3em;
-    z-index: 1;        
-    padding: 2em;
-    border-radius: 1em;
-    max-width: 600px;
-    width: 90%;
+/* 2) Overlay centré et dimensionné pour RESTER DANS LE VISAGE */
+.form-mickey{
+  position: absolute;
+  left: 50%;
+  top: 54%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  /* >>> largeur limitée pour ne pas dépasser le cercle (oreilles) */
+  width: 60%;            /* ajuste entre 55–62% selon ton PNG */
+  max-width: 28rem;      /* borne haute sur desktop */
+  min-width: 16rem;      /* borne basse pour lisibilité */
+  padding: 1rem;
+
+  /* assure l’enroulement du texte */
+  text-align: center;
+  overflow-wrap: anywhere;
+  word-break: normal;
 }
 
-.check_email{
-    gap: 8em;
-}
-.check_email p{
-    font-size: 2em;
-    color: #5A86A1;
-    width: 58%
+/* 3) TYPO responsive SANS clamp : base rem + ajout vw + bornes */
+.form-mickey h2{
+    background-color: #5A86A1;
+    color: white;
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 13px;
+    font-size: 1.8rem;
+    line-height: 1.2;
+    margin: 0 0 .8rem 0;
 }
 .form-mickey p a{
-    background-color: #FFE893;
+    padding: 10px;
+    border: 1px solid #AED3EA;
+    border-radius: 20px; 
+    background-color: #FFE893; 
     color: #000;
-    border: 2px solid #5A86A1;
-    border-radius: 15px;
-    padding: 6px;
-    font-size: 1em;
-    cursor: pointer;
-}
-.form-mickey2 {    
-    display: flex;
-    gap: 1em;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    bottom:-3em;
+
 }
 
-.form-mickey h2, .form-mickey2 h2{
-    white-space: nowrap; 
-    width: fit-content;
-    color: white;
-    background-color: #5A86A1;
-    border: 2px solid black;
-    border-radius: 15px;
-    padding: 0.5em;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+form label {
+  display: block;        /* force le label à occuper toute la ligne */
+  margin-bottom: 0.4rem; /* petit espace avant l’input */
 }
-form {
-    display: flex; 
-    flex-direction: column;
-    padding: 2em;
-    gap: 1em;
-    width: 300px;
+.form-mickey input,
+.bouton{
+  font-size: calc(.9rem + .6vw);
 }
 
-
-input {
-    position: relative;
-    border-radius: 15px;
-    padding: 0.5em;
+/* 4) Évite les largeurs/positions rigides qui font déborder */
+.form-mickey .form{
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  width: 100%;           /* au lieu de 300px */
+}
+.form-mickey input{
+  width: 100%;
+  border-radius: 15px;
+  padding: 0.6rem 0.9rem;
+  box-sizing: border-box;
+}
+/* On enveloppe le champ dans un conteneur relatif */
+.input-with-icon {
+  position: relative;
+  width: 100%;
 }
 
+/* Champ texte : espace à droite pour l’icône */
+.input-with-icon input {
+  width: 100%;
+  border-radius: 15px;
+  padding: 0.6rem 3rem 0.6rem 0.9rem; /* <-- espace à droite ajouté */
+  box-sizing: border-box;
+  font-size: 1rem;
+}
+
+/* Icône œil positionnée à l’intérieur du champ */
 .image_mdp {
-    position: absolute;
-    width: 3em;
-    top: 17.8em;
-    right: 12em;
-    cursor: pointer;
+  position: absolute;
+  right: 0.8rem;               /* collée au bord droit */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3rem;               /* ajuste la taille */
+  cursor: pointer;
 }
 .image_mdp3 {
-    position: absolute;
-    cursor: pointer;
-    width: 3em;
-    bottom: 7.7em;
-    left: 9em;
+  position: absolute;
+  right: 2rem;               /* collée au bord droit */
+  top: 77%;
+  transform: translateY(-50%);
+  width: 3rem;               /* ajuste la taille */
+  cursor: pointer;
 }
-.bouton{
-    margin: 17px auto;
-    background-color: #5A86A1;
+.bouton, .bouton2{
+        background-color: #5A86A1;
     color: white;
     border: 2px solid black;
     border-radius: 15px;
-    padding: 1em;
-    font-size: 1em;
-    cursor: pointer;
-    width: 5em;
+    padding: 10px;
+    margin-top: 10px;
 }
-.btn2{
-    margin: 0 auto;
-    background-color: #5A86A1;
-    color: white;
-    border: 2px solid black;
-    border-radius: 15px;
-    padding: 1em;
-    font-size: 1em;
-    cursor: pointer;
-    width: 7em;
-}
+/* Si tu ne peux pas modifier le HTML tout de suite, au minimum: */
 
-.bouton2{
-    margin: 0 auto;
-    background-color: #5A86A1;
-    color: white;
-    border: 2px solid black;
-    border-radius: 15px;
-    padding: 1em;
-    font-size: 1em;
-    cursor: pointer;
-    width: 10em;
+@media (max-width: 800px){
+  .form-mickey { font-size: .8rem; }
+}
+@media (max-width: 737px){
+  .form-mickey { font-size: .6rem; }
+  .form-mickey input {
+    height: 1em;
+}
 }

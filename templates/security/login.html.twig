@@ -7,7 +7,7 @@
 
 {% block stylesheets %}
 {{ parent() }}
-   <link rel="stylesheet" href="{{ asset('styles/css/form.css') }}?v=1.0">
+   <link rel="stylesheet" href="{{ asset('styles/css/form.css') }}?v=2">
 {% endblock %}
 
 {% block body %}
@@ -15,27 +15,28 @@
     {% if error %}
         <div class="error">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
-
-    <img src="{{ asset('images/mickey-formulaire.png') }}" alt="formulaire en forme de mickey" class="image_mickey">
-
-    <div class='form-mickey'>
-        <h2>CONNECTE TOI !</h2>
-        <form method="post" action="{{ path('app_login_check') }}">
-            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-            
-            <label for="username">Ton identifiant :</label>
-            <input type="text" id="username" name="_username" value="{{ last_username }}" required autofocus>
-    
-            <label for="password">Ton mot de passe :</label>
-            <input type="password" id="registration_form_plainPassword" name="_password" required>
-            <img src="{{ asset('images/eye.png') }}" alt="masquer/afficher le mot de passe" id="eye" class="image_mdp">
-    
-            <button type="submit" class="bouton">Go</button>
-        </form>
-        <p>Tu as oublié ton mot de passe ?</p>
-        <p><a href="{{ path('reset-password_app_forgot_password_request') }}">Clique ICI !</a></p>
-        <p>Tu n'es pas encore membre chez nous ?</p>
-        <p><a href="{{ path('app_register') }}">C'est par ICI !</a></p>
+    <div class="mickey">
+        <img src="{{ asset('images/mickey-formulaire.png') }}" alt="formulaire en forme de mickey" class="image_mickey">
+        <div class='form-mickey'>
+            <h2>CONNECTE TOI !</h2>
+            <form method="post" action="{{ path('app_login_check') }}">
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                
+                <label for="username">Ton identifiant :</label>
+                <input type="text" id="username" name="_username" value="{{ last_username }}" required autofocus>
+                
+                <label for="password">Ton mot de passe :</label>
+                <div class="input-with-icon">
+                    <input type="password" id="registration_form_plainPassword" name="_password" required>
+                    <img src="{{ asset('images/eye.png') }}" alt="masquer/afficher le mot de passe" id="eye" class="image_mdp">
+                </div>
+                <button type="submit" class="bouton">Go</button>
+            </form>
+            <p>Tu as oublié ton mot de passe ?</p>
+            <p><a href="{{ path('reset-password_app_forgot_password_request') }}">Clique ICI !</a></p>
+            <p>Tu n'es pas encore membre chez nous ?</p>
+            <p><a href="{{ path('app_register') }}">C'est par ICI !</a></p>
+        </div>
     </div>
 
 {% endblock %}

@@ -8,6 +8,7 @@ use App\Entity\Sujet;
 use App\Entity\Comment;
 use App\Form\SujetType;
 use App\Form\CategoryType;
+use App\Form\UserType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use App\Repository\UserRepository;
 use App\Repository\CategoryRepository;
@@ -19,6 +20,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 #[IsGranted('ROLE_ADMIN')]
 #[Route('/admin', name: 'admin_')]
@@ -57,31 +59,42 @@ class AdminController extends AbstractController
         ]);
     }
 
-    #[Route('/members/new', name: 'members_new')]
-    public function membersNew(Request $request, EntityManagerInterface $em): Response
-    {
-        $user = new User();
+#[Route('/members/new', name: 'members_new')]
+public function membersNew(
+    Request $request,
+    EntityManagerInterface $em,
+    UserPasswordHasherInterface $passwordHasher
+): Response {
+    $user = new User();
 
-        // Formulaire minimal (adapte les champs à ton User)
-        $form = $this->createFormBuilder($user)
-            ->add('username')
-            ->add('email')
-            ->getForm();
+    $form = $this->createForm(UserType::class, $user);   // 👈 utilise ton FormType
+    $form->handleRequest($request);
 
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            // ⚠️ Si tu ajoutes un password, pense à le hasher !
+    if ($form->isSubmitted() && $form->isValid()) {
+        // Récupère le MDp en clair depuis le champ non mappé
+        $plainPassword = $form->get('plainPassword')->getData();
+
+        // Sécurité : double-check si jamais non soumis
+        if ($plainPassword === null || $plainPassword === '') {
+            $this->addFlash('error', 'Le mot de passe est requis.');
+        } else {
+            // Hash + set sur la propriété mappée "password"
+            $hashed = $passwordHasher->hashPassword($user, $plainPassword);
+            $user->setPassword($hashed);
+
             $em->persist($user);
             $em->flush();
+
             $this->addFlash('success', 'Membre créé.');
             return $this->redirectToRoute('admin_members');
         }
-
-        return $this->render('admin/form/form_member.html.twig', [
-            'form' => $form->createView(),
-            'members' => 'Nouveau membre',
-        ]);
     }
+
+    return $this->render('admin/form/form_member.html.twig', [
+        'form' => $form->createView(),
+        'members' => 'Nouveau membre',
+    ]);
+}
 
     #[Route('/members/{id}/edit', name: 'members_edit')]
     public function membersEdit(User $user, Request $request, EntityManagerInterface $em): Response
