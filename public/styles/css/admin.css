@@ -120,12 +120,13 @@ Style pour les tableaux
   background-color: #F5E8E3;        
   border-radius: 0.5em;         
   box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
-  overflow: hidden;              
+  overflow: hidden;        
 }
 
 .admin-dashboard table th,
 .admin-dashboard table td {
   background-color: #F5E8E3;        
+
 }
 
 .admin-dashboard .list-group-item {
@@ -145,4 +146,27 @@ Style pour les tableaux
   background: #F5E8E3;
   border: none;
   border-bottom: 1px solid #eee;
+}
+
+.only-mobile{
+  display: none;
+}
+
+
+@media (max-width: 993px){
+  .admin-dashboard table th,
+.admin-dashboard table td {    
+  display: flex;
+  justify-content: center;
+
+}
+.admin-dashboard table thead{
+  display: none;
+}
+.only-mobile {
+  font-size: large;
+  color: #5A86A1;
+  display: block;
+  margin-right: .5rem; 
+  }
 }
