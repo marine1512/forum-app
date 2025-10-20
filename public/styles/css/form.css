@@ -114,10 +114,18 @@ form label {
 .image_mdp3 {
   position: absolute;
   right: 2rem;               /* collée au bord droit */
-  top: 77%;
+  top: 70%;
   transform: translateY(-50%);
   width: 3rem;               /* ajuste la taille */
   cursor: pointer;
+}
+
+.MDP{
+    text-align: start;
+    font-size: 0.8rem;
+    color: #5b86a1;
+    margin-top: -1em;
+    margin-left: 10px;
 }
 .bouton, .bouton2{
         background-color: #5A86A1;

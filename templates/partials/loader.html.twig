@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Chargement...</title>
+  <link rel="stylesheet" href="{{ asset('styles/css/loader.css') }}">
+  <link rel="icon" type="image/x-icon" href="{{ asset('images/icone-mickey.png') }}">
+</head>
+
+<body>
+  <div id="app-loader" class="loader-overlay">
+    <div class="loader-content text-center loader">
+      <img src="{{ asset('images/Spinner.gif') }}" alt="Chargement..." class="loader-gif">
+      <div class="loader-text">Chargement du monde de Mickey...</div>
+    </div>
+  </div>
+
+
+  <script>
+    window.addEventListener('load', () => {
+      const loader = document.getElementById('app-loader');
+
+      setTimeout(() => {
+        loader.classList.add('fade-out');
+      }, 10000);
+    });
+  </script>
+</body>
+</html>
+

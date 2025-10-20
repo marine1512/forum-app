@@ -8,9 +8,15 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 /**
- * Entité représentant un utilisateur.
+ * Entité représentant un utilisateur dans l'application.
+ * 
+ * Cette entité gère les informations relatives à un utilisateur, y compris ses 
+ * identifiants, son statut, ses rôles, ainsi que les relations avec d'autres entités 
+ * (comme ses commentaires).
  */
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: 'user')]
@@ -18,7 +24,9 @@ use Symfony\Component\Security\Core\User\UserInterface;
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     /**
-     * ID unique de l'utilisateur.
+     * Identifiant unique de l'utilisateur.
+     *
+     * @var int|null
      */
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -27,54 +35,91 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * Nom d'utilisateur unique.
+     * 
+     * @var string|null
      */
     #[ORM\Column(length: 180, unique: true)]
     private ?string $username = null;
 
     /**
-     * Adresse e-mail unique de l'utilisateur.
+     * Adresse email unique.
+     * 
+     * @var string|null
      */
     #[ORM\Column(length: 180, unique: true)]
     private ?string $email = null;
 
     /**
-     * Rôles associés à l'utilisateur (format JSON).
+     * Liste des rôles attribués à l'utilisateur.
+     * 
+     * @var array<string>
      */
     #[ORM\Column(type: Types::JSON)]
     private array $roles = [];
 
     /**
-     * Mot de passe chiffré de l'utilisateur.
+     * Mot de passe encodé de l'utilisateur.
+     * 
+     * @var string|null
      */
     #[ORM\Column]
     private ?string $password = null;
 
     /**
-     * Indique si l'utilisateur est vérifié.
+     * Indique si l'utilisateur a confirmé son compte.
+     * 
+     * @var bool
      */
     #[ORM\Column]
     private bool $isVerified = false;
 
+    /**
+     * Indique si l'utilisateur est actif.
+     * 
+     * @var bool
+     */
     #[ORM\Column(type: 'boolean')]
     private bool $isActive = false;
 
+    /**
+     * Date de création du compte utilisateur.
+     * 
+     * @var \DateTimeInterface|null
+     */
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $createdAt = null;
 
-    // Constructeur pour initialiser la date à maintenant
-    public function __construct()
-    {
-        $this->createdAt = new \DateTimeImmutable(); // La date est définie automatiquement
-    }
+    /**
+     * Les commentaires postés par cet utilisateur.
+     * 
+     * @var Collection<int, Comment> Collection d'objets Comment.
+     */
+    #[ORM\OneToMany(mappedBy: 'authorUser', targetEntity: Comment::class, cascade: ['persist', 'remove'])]
+    private Collection $comments;
 
     /**
-     * Jeton pour la vérification de l'adresse e-mail.
+     * Jeton de vérification pour l'email (facultatif).
+     * 
+     * @var string|null
      */
     #[ORM\Column(type: Types::STRING, length: 255, nullable: true)]
     private ?string $emailVerificationToken = null;
 
     /**
-     * Retourne l'ID de l'utilisateur.
+     * Constructeur de l'entité User.
+     * 
+     * Initialise la date de création et les commentaires de l'utilisateur.
+     */
+    public function __construct()
+    {
+        $this->createdAt = new \DateTimeImmutable(); 
+        $this->comments = new ArrayCollection();
+    }
+
+    /**
+     * Récupère l'identifiant unique de l'utilisateur.
+     * 
+     * @return int|null L'identifiant de l'utilisateur.
      */
     public function getId(): ?int
     {
@@ -82,7 +127,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * Retourne l'identifiant unique de l'utilisateur (adresse e-mail).
+     * Récupère l'identifiant unique pour la connexion (user identifier).
+     * 
+     * Conforme à UserInterface.
+     *
+     * @return string L'identifiant principal de l'utilisateur (le username).
      */
     public function getUserIdentifier(): string
     {
@@ -90,7 +139,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * Retourne le nom d'utilisateur.
+     * Récupère le nom d'utilisateur.
+     * 
+     * @return string|null Le nom d'utilisateur.
      */
     public function getUsername(): ?string
     {
@@ -99,6 +150,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * Définit le nom d'utilisateur.
+     * 
+     * @param string $username Le nouveau nom d'utilisateur.
+     * @return self
      */
     public function setUsername(string $username): self
     {
@@ -108,7 +162,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * Récupère l'adresse e-mail.
+     * Récupère l'email.
+     * 
+     * @return string|null L'email de l'utilisateur.
      */
     public function getEmail(): ?string
     {
@@ -116,7 +172,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * Définit l'adresse e-mail.
+     * Définit l'email de l'utilisateur.
+     * 
+     * @param string $email Le nouvel email.
+     * @return self
      */
     public function setEmail(string $email): self
     {
@@ -126,11 +185,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * Retourne les rôles associés à l'utilisateur.
+     * Récupère les rôles attribués à l'utilisateur.
+     * 
+     * @return array<string> Liste unique des rôles.
      */
     public function getRoles(): array
     {
         $roles = $this->roles;
+
+        // Assure que l'utilisateur a au moins le rôle utilisateur de base.
         $roles[] = 'ROLE_USER';
 
         return array_unique($roles);
@@ -138,6 +201,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * Définit les rôles de l'utilisateur.
+     * 
+     * @param array $roles Liste de rôles à attribuer.
+     * @return self
      */
     public function setRoles(array $roles): self
     {
@@ -147,7 +213,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * Retourne le mot de passe chiffré.
+     * Récupère le mot de passe encodé de l'utilisateur.
+     * 
+     * @return string|null Le mot de passe encodé.
      */
     public function getPassword(): ?string
     {
@@ -155,7 +223,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * Définit le mot de passe.
+     * Définit le mot de passe encodé.
+     * 
+     * @param string $password Le mot de passe encodé.
+     * @return self
      */
     public function setPassword(string $password): self
     {
@@ -165,14 +236,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * Efface les informations sensibles.
+     * Supprime les informations sensibles (implémentation de `eraseCredentials`).
+     * 
+     * Actuellement, cette méthode est vide.
      */
     public function eraseCredentials(): void
     {
+        // Supprimer en mémoire les données sensibles si nécessaire.
     }
 
     /**
-     * Indique si l'utilisateur est vérifié.
+     * Indique si l'utilisateur a confirmé son compte.
+     * 
+     * @return bool
      */
     public function isVerified(): bool
     {
@@ -180,7 +256,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * Définit si l'utilisateur est vérifié.
+     * Définir si l'utilisateur est vérifié.
+     * 
+     * @param bool $isVerified Vérification (vrai ou faux).
+     * @return self
      */
     public function setIsVerified(bool $isVerified): self
     {
@@ -190,42 +269,91 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * Retourne le jeton de vérification de l'e-mail.
+     * Indique si l'utilisateur est actif.
+     * 
+     * @return bool
      */
-    public function getEmailVerificationToken(): ?string
-    {
-        return $this->emailVerificationToken;
-    }
-
-    /**
-     * Définit le jeton de vérification de l'e-mail.
-     */
-    public function setEmailVerificationToken(?string $emailVerificationToken): self
-    {
-        $this->emailVerificationToken = $emailVerificationToken;
-
-        return $this;
-    }
-
     public function isActive(): bool
     {
         return $this->isActive;
     }
 
+    /**
+     * Définit si l'utilisateur est actif.
+     * 
+     * @param bool $isActive Statut actif (vrai ou faux).
+     * @return self
+     */
     public function setIsActive(bool $isActive): self
     {
         $this->isActive = $isActive;
 
         return $this;
     }
+
+    /**
+     * Récupère la date de création du compte.
+     * 
+     * @return \DateTimeInterface|null Date de création.
+     */
     public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->createdAt;
     }
 
+    /**
+     * Définit la date de création du compte.
+     * 
+     * @param \DateTimeInterface $createdAt La nouvelle date.
+     * @return self
+     */
     public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Récupère les commentaires de l'utilisateur.
+     * 
+     * @return Collection<int, Comment> Les commentaires associés.
+     */
+    public function getComments(): Collection
+    {
+        return $this->comments;
+    }
+
+    /**
+     * Ajoute un commentaire à l'utilisateur.
+     * 
+     * @param Comment $comment Le commentaire à ajouter.
+     * @return self
+     */
+    public function addComment(Comment $comment): self
+    {
+        if (!$this->comments->contains($comment)) {
+            $this->comments->add($comment);
+            $comment->setAuthorUser($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Supprime un commentaire de l'utilisateur.
+     * 
+     * @param Comment $comment Le commentaire à supprimer.
+     * @return self
+     */
+    public function removeComment(Comment $comment): self
+    {
+        if ($this->comments->removeElement($comment)) {
+            if ($comment->getAuthorUser() === $this) {
+                $comment->setAuthorUser(null);
+            }
+        }
+
         return $this;
     }
 }

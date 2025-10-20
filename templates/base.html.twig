@@ -4,75 +4,31 @@
     <title>{% block title %}Site de discussion Mickey et TCG{% endblock %}</title>
 
     {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
    <link rel="stylesheet" href="{{ asset('styles/css/header-footer.css') }}?v=1.0">
     {% endblock %}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>    
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
         <script src="{{ asset('styles/javascript/header-footer.js') }}" defer></script>
     {% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('images/icone-mickey.png') }}">
 </head>
+{% if app.request.attributes.get('_route') == 'home' %}
+    {% include 'partials/loader.html.twig' %}
+{% endif %}
 
-<header class="header">
-<nav id="nav">  
-    <a class="logo" href="{{ path('home') }}"><img src="{{ asset('images/Logo.png') }}" alt="Logo du site"></a> 
-
-<ul>
-    {% if is_granted('ROLE_ADMIN') %}
-        <li class="admin">
-            <a href="{{ path('admin_dashboard') }}" 
-               class="{{ app.request.attributes.get('_route') == 'admin_dashboard' ? 'active' : '' }}">
-                Tableau administrateur
-            </a>
-        </li>
-    {% endif %}
-
-    <li>
-        <a href="{{ path('home') }}" 
-           class="{{ app.request.attributes.get('_route') == 'home' ? 'active' : '' }}">
-            Accueil
-        </a>
-    </li>
-
-    {% if app.user %}
-        <li>
-            <a href="{{ path('forum') }}" 
-               class="{{ app.request.attributes.get('_route') == 'forum' ? 'active' : '' }}">
-                Forum
-            </a>
-        </li>
-        <li>
-            <a href="{{ path('profil') }}" 
-               class="{{ app.request.attributes.get('_route') == 'profil' ? 'active' : '' }}">
-                Mon profil
-            </a>
-        </li>
-        <li>
-            <a href="{{ path('app_logout') }}">Se déconnecter</a>
-        </li>
-    {% else %}
-        <li>
-            <a href="{{ path('app_login') }}" 
-               class="{{ app.request.attributes.get('_route') == 'app_login' ? 'active' : '' }}">
-                Se connecter
-            </a>
-        </li>
-    {% endif %}
-</ul>
-
-    <div id="icon">
-
-    
-</nav>
-
-</header>
+<body>
+    {% include 'partials/header.html.twig' %}
 
     <main>
-       {% block body %}
+        {% block body %}
         {% endblock %}
     </main>
-{{ render(controller('App\\Controller\\FooterController::index')) }}
+
+    {% include 'partials/footer.html.twig' %}
+</body>
 
 </html>

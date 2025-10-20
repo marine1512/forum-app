@@ -1,0 +1,36 @@
+{
+    "devDependencies": {
+        "@babel/core": "^7.17.0",
+        "@babel/preset-env": "^7.16.0",
+        "@symfony/webpack-encore": "^5.0.0",
+        "core-js": "^3.38.0",
+        "regenerator-runtime": "^0.13.9",
+        "webpack": "^5.74.0",
+        "webpack-cli": "^5.1.0"
+    },
+    "license": "UNLICENSED",
+    "private": true,
+    "scripts": {
+        "dev-server": "encore dev-server",
+        "dev": "encore dev",
+        "watch": "encore dev --watch",
+        "build": "encore production --progress"
+    },
+    "name": "dev_app",
+    "version": "1.0.0",
+    "description": "Un projet de forum dédié au personnes fan de Disney développé avec **Symfony** pour pouvoir échanger.",
+    "main": "webpack.config.js",
+    "directories": {
+        "test": "tests"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/marine1512/forum-app.git"
+    },
+    "keywords": [],
+    "author": "",
+    "bugs": {
+        "url": "https://github.com/marine1512/forum-app/issues"
+    },
+    "homepage": "https://github.com/marine1512/forum-app#readme"
+}
