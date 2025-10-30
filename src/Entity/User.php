@@ -292,6 +292,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
+     * Récupère le jeton de vérification pour l'email.
+     * 
+     * @return string|null
+     */
+    public function getEmailVerificationToken(): ?string
+    {
+        return $this->emailVerificationToken;
+    }
+
+    /**
+     * Définit le jeton de vérification pour l'email.
+     * 
+     * @param string|null $emailVerificationToken Le jeton à définir.
+     * @return self
+     */
+    public function setEmailVerificationToken(?string $emailVerificationToken): self
+    {
+        $this->emailVerificationToken = $emailVerificationToken;
+
+        return $this;
+    }
+
+
+    /**
      * Récupère la date de création du compte.
      * 
      * @return \DateTimeInterface|null Date de création.

@@ -31,14 +31,15 @@ main {
     display: flex; 
     flex-direction: column;
     flex: 1; 
+    border-radius: 15px;
     height: 100%; 
     margin-bottom: 20px;
+    background-color: #F5E8E3;
+    border: 2px solid black; 
 }
 
 .premier-bloc-sujet, .deuxieme-bloc-sujet, .troisieme-bloc-sujet {
     width: 100%;
-    background-color: #F5E8E3; 
-    border: 2px solid #AED3EA; 
     display: flex; 
     flex-direction: column;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
@@ -46,10 +47,16 @@ main {
     padding: 10px;
 }
 
+.premier-bloc-sujet{
+    border-bottom: 2px solid #AED3EA 
+}
 
 .troisieme-bloc-sujet{
     position: relative;
     order: 3;
+    background-color: #F5E8E3;
+    border-radius: 15px;
+    border: 2px solid black;
 }
 .comment-item {
     list-style: none;
@@ -120,6 +127,19 @@ a .bouton-forum {
     font-size: 1em;
     cursor: pointer;
     width: 7em;
+}
+
+.modifier {
+    display: inline-flex;
+    padding: 2px 5px;
+    border: 1px solid #ffe793;
+    border-radius: 5px;
+    background-color: #5A86A1;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 1em;
+    align-items: center;
 }
 
 /* Styles communs */

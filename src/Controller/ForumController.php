@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use App\Repository\CategoryRepository;
 use App\Repository\SujetRepository;
 use App\Form\SujetType;
+use App\Form\CommentType;
 use App\Entity\Sujet;
 use App\Entity\Comment;
 use Doctrine\ORM\EntityManagerInterface;
@@ -99,4 +100,29 @@ public function showSubject(
         'comments' => $comments,
     ]);
 }
+
+#[Route('/comment/{id}/edit', name: 'comment_edit')]
+    public function edit(Comment $comment, Request $request, EntityManagerInterface $entityManager): Response
+    {
+        // Vérifie si l'utilisateur connecté est l'auteur
+        if ($this->getUser()->getUserIdentifier() !== $comment->getAuthor()) {
+            throw $this->createAccessDeniedException('Vous n\'êtes pas autorisé à modifier ce commentaire.');
+        }
+
+        // Créez un formulaire pour modifier le commentaire
+        $form = $this->createForm(CommentType::class, $comment);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+            $this->addFlash('success', 'Le commentaire a été modifié avec succès.');
+
+            return $this->redirectToRoute('forum_sujet_detail', ['id' => $comment->getSubject()->getId()]); // Redirigez vers la liste des commentaires
+        }
+
+        return $this->render('forum/comment_edit.html.twig', [
+            'form' => $form->createView(),
+            'comment' => $comment,
+        ]);
+    }
 }

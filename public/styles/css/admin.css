@@ -92,6 +92,7 @@ Style pour l'affichage de la page principale et des boutons
 .card{
     border: 1px solid black !important;
     background-color: #F5E8E3 !important; 
+    border-radius: 15px !important;
 }
 
 .admin-cards{

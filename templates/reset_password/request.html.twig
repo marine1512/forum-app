@@ -12,25 +12,22 @@
         <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
     {% endfor %}
 
-
-
-    <img src="{{ asset('images/mickey-formulaire.png') }}" alt="formulaire en forme de mickey" class="image_mickey">
-
-    <div class='form-mickey'>    
-    <h2>Mot de passe oublié ?</h2>
-
-    {{ form_start(requestForm) }}
-        {{ form_row(requestForm.email, {
-            'label': 'Email : '
-        }) }}
-        <div>
-            <small>
-                Saisissez votre adresse e-mail et nous vous enverrons un lien
-                pour réinitialiser votre mot de passe.
-            </small>
+    <div class="mickey">
+        <img src="{{ asset('images/mickey-formulaire.png') }}" alt="formulaire en forme de mickey" class="image_mickey">
+        <div class='form-mickey'>    
+        <h2>Mot de passe oublié ?</h2>
+        {{ form_start(requestForm) }}
+            {{ form_row(requestForm.email, {
+                'label': 'Email : '
+            }) }}
+            <div>
+                <small>
+                    Saisissez votre adresse e-mail et nous vous enverrons un lien
+                    pour réinitialiser votre mot de passe.
+                </small>
+            </div>
+            <button class="bouton2">Envoyer le lien de réinitialisation</button>
+        {{ form_end(requestForm) }}
         </div>
-
-        <button class="bouton2">Envoyer le lien de réinitialisation</button>
-    {{ form_end(requestForm) }}
     </div>
 {% endblock %}

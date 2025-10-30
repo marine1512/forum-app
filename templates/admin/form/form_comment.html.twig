@@ -7,6 +7,7 @@
 {% endblock %}
 
 {% block body %}
+<a class="bouton2" href="{{ path('admin_comments') }}">← Retour</a>
 <div class="container my-4 d-flex flex-column align-items-center">
   <h1 class="mb-4">{{ name }}</h1>
   {{ form_start(form, { attr: { class: 'form-admin' } }) }}

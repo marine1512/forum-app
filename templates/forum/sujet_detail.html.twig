@@ -16,22 +16,26 @@
          <div class='premier-bloc-sujet'>
             <h2><u>Sujet :</u> {{ subject.name }}</h2>
             <p class="categorie categorie-{{ subject.category.id }}">
-  <strong>Catégorie :</strong> {{ subject.category.name }}
-</p>
+             <strong>Catégorie :</strong> {{ subject.category.name }}
+            </p>
          </div>
          <div class='deuxieme-bloc-sujet'>
             <ul id="comment-list">
-        {% for comment in comments %}
-            <li class="comment-item">
-                <div class="Auteur">
-                    <p>Pseudo : {{ comment.author }}</p>
-                    <div class="date">
-                        <p>Posté le : {{ comment.date|date('d/m/Y à H:i') }}</p>
-                    </div>
-                </div>
-                <p>{{ comment.text }}</p>
-            </li>
-        {% endfor %}
+                {% for comment in comments %}
+                    <li class="comment-item">
+                    {# Vérifiez si l'utilisateur connecté est l'auteur du commentaire #}
+                        {% if app.user and app.user.username == comment.author %}
+                            <a href="{{ path('comment_edit', { id: comment.id }) }}" class="modifier">Modifier</a>
+                        {% endif %}
+                        <div class="Auteur">
+                            <p>Pseudo : {{ comment.author }}</p>
+                            <div class="date">
+                                <p>Posté le : {{ comment.date|date('d/m/Y à H:i') }}</p>
+                            </div>
+                        </div>
+                        <p>{{ comment.text }}</p>
+                    </li>
+                {% endfor %}
             </ul>
          </div>
       </div>
