@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  symfony:
+    build:
+      context: .
+      dockerfile: Dockerfile # Si un Dockerfile est utilisé pour Symfony
+    volumes:
+      - .:/var/www/html
+    ports:
+      - "8000:8000" # Port d'accès à Symfony
+    depends_on:
+      - mailhog
+    networks:
+      - app-network
+
+  mailhog:
+    image: mailhog/mailhog
+    container_name: amazing_jennings
+    ports:
+      - "1025:1025" # Port SMTP (pour envoyer des emails)
+      - "8025:8025" # Interface web (pour voir les emails)
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

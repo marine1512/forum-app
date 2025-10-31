@@ -1,1 +1,1 @@
-php bin/console doctrine:migrations:diff
+symfony console doctrine:migrations:migratephp bin/console doctrine:migrations:diff

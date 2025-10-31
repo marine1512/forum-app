@@ -63,127 +63,132 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Controller\\AdminController",
             "name": "AdminController",
-            "summary": "",
+            "summary": "Contr\u00F4leur\u0020pour\u0020g\u00E9rer\u0020toutes\u0020les\u0020op\u00E9rations\u0020administratives.",
             "url": "classes/App-Controller-AdminController.html"
         },                {
             "fqsen": "\\App\\Controller\\AdminController\u003A\u003Adashboard\u0028\u0029",
             "name": "dashboard",
-            "summary": "",
+            "summary": "Affiche\u0020un\u0020tableau\u0020de\u0020bord\u0020avec\u0020les\u0020statistiques\u0020globales.",
             "url": "classes/App-Controller-AdminController.html#method_dashboard"
         },                {
             "fqsen": "\\App\\Controller\\AdminController\u003A\u003Amembers\u0028\u0029",
             "name": "members",
-            "summary": "",
+            "summary": "Affiche\u0020une\u0020liste\u0020des\u0020membres\u0020\u0028utilisateurs\u0029\u0020enregistr\u00E9s.",
             "url": "classes/App-Controller-AdminController.html#method_members"
         },                {
             "fqsen": "\\App\\Controller\\AdminController\u003A\u003AmembersNew\u0028\u0029",
             "name": "membersNew",
-            "summary": "",
+            "summary": "Cr\u00E9e\u0020un\u0020nouveau\u0020membre.",
             "url": "classes/App-Controller-AdminController.html#method_membersNew"
         },                {
             "fqsen": "\\App\\Controller\\AdminController\u003A\u003AmembersEdit\u0028\u0029",
             "name": "membersEdit",
-            "summary": "",
+            "summary": "Permet\u0020de\u0020modifier\u0020un\u0020membre\u0020existant.",
             "url": "classes/App-Controller-AdminController.html#method_membersEdit"
         },                {
             "fqsen": "\\App\\Controller\\AdminController\u003A\u003AmembersDelete\u0028\u0029",
             "name": "membersDelete",
-            "summary": "",
+            "summary": "Supprime\u0020un\u0020membre\u0020existant.",
             "url": "classes/App-Controller-AdminController.html#method_membersDelete"
         },                {
             "fqsen": "\\App\\Controller\\AdminController\u003A\u003Acategories\u0028\u0029",
             "name": "categories",
-            "summary": "",
+            "summary": "Affiche\u0020une\u0020liste\u0020des\u0020cat\u00E9gories\u0020enregistr\u00E9s.",
             "url": "classes/App-Controller-AdminController.html#method_categories"
         },                {
             "fqsen": "\\App\\Controller\\AdminController\u003A\u003AcategoriesNew\u0028\u0029",
             "name": "categoriesNew",
-            "summary": "",
+            "summary": "Cr\u00E9e\u0020une\u0020nouvelle\u0020cat\u00E9gorie.",
             "url": "classes/App-Controller-AdminController.html#method_categoriesNew"
         },                {
             "fqsen": "\\App\\Controller\\AdminController\u003A\u003AcategoriesEdit\u0028\u0029",
             "name": "categoriesEdit",
-            "summary": "",
+            "summary": "Permet\u0020de\u0020modifier\u0020une\u0020cat\u00E9gorie\u0020existante.",
             "url": "classes/App-Controller-AdminController.html#method_categoriesEdit"
         },                {
             "fqsen": "\\App\\Controller\\AdminController\u003A\u003AcategoriesDelete\u0028\u0029",
             "name": "categoriesDelete",
-            "summary": "",
+            "summary": "Supprime\u0020une\u0020cat\u00E9gorie\u0020existante.",
             "url": "classes/App-Controller-AdminController.html#method_categoriesDelete"
         },                {
             "fqsen": "\\App\\Controller\\AdminController\u003A\u003Asujets\u0028\u0029",
             "name": "sujets",
-            "summary": "",
+            "summary": "Affiche\u0020une\u0020liste\u0020des\u0020sujets.",
             "url": "classes/App-Controller-AdminController.html#method_sujets"
         },                {
             "fqsen": "\\App\\Controller\\AdminController\u003A\u003AsujetsNew\u0028\u0029",
             "name": "sujetsNew",
-            "summary": "",
+            "summary": "Cr\u00E9e\u0020un\u0020nouveau\u0020sujet.",
             "url": "classes/App-Controller-AdminController.html#method_sujetsNew"
         },                {
             "fqsen": "\\App\\Controller\\AdminController\u003A\u003AsujetsEdit\u0028\u0029",
             "name": "sujetsEdit",
-            "summary": "",
+            "summary": "Permet\u0020de\u0020modifier\u0020un\u0020sujet\u0020existant.",
             "url": "classes/App-Controller-AdminController.html#method_sujetsEdit"
         },                {
             "fqsen": "\\App\\Controller\\AdminController\u003A\u003AsujetsDelete\u0028\u0029",
             "name": "sujetsDelete",
-            "summary": "",
+            "summary": "Supprime\u0020un\u0020sujet\u0020existant.",
             "url": "classes/App-Controller-AdminController.html#method_sujetsDelete"
         },                {
             "fqsen": "\\App\\Controller\\AdminController\u003A\u003Acomments\u0028\u0029",
             "name": "comments",
-            "summary": "",
+            "summary": "Affiche\u0020une\u0020liste\u0020des\u0020commentaires.",
             "url": "classes/App-Controller-AdminController.html#method_comments"
         },                {
             "fqsen": "\\App\\Controller\\AdminController\u003A\u003AcommentsEdit\u0028\u0029",
             "name": "commentsEdit",
-            "summary": "",
+            "summary": "Permet\u0020de\u0020modifier\u0020un\u0020commentaire\u0020existant.",
             "url": "classes/App-Controller-AdminController.html#method_commentsEdit"
         },                {
             "fqsen": "\\App\\Controller\\AdminController\u003A\u003AcommentsDelete\u0028\u0029",
             "name": "commentsDelete",
-            "summary": "",
+            "summary": "Supprime\u0020un\u0020commentaire\u0020existant.",
             "url": "classes/App-Controller-AdminController.html#method_commentsDelete"
         },                {
             "fqsen": "\\App\\Controller\\ForumController",
             "name": "ForumController",
-            "summary": "",
+            "summary": "Contr\u00F4leur\u0020pour\u0020g\u00E9rer\u0020les\u0020fonctionnalit\u00E9s\u0020du\u0020forum.",
             "url": "classes/App-Controller-ForumController.html"
         },                {
             "fqsen": "\\App\\Controller\\ForumController\u003A\u003Ashow\u0028\u0029",
             "name": "show",
-            "summary": "",
+            "summary": "Affiche\u0020la\u0020page\u0020principale\u0020du\u0020forum\u0020avec\u0020les\u0020cat\u00E9gories\u0020et\u0020les\u0020sujets.",
             "url": "classes/App-Controller-ForumController.html#method_show"
         },                {
             "fqsen": "\\App\\Controller\\ForumController\u003A\u003AshowSubject\u0028\u0029",
             "name": "showSubject",
-            "summary": "",
+            "summary": "Affiche\u0020les\u0020d\u00E9tails\u0020d\u0027un\u0020sujet\u0020sp\u00E9cifique,\u0020y\u0020compris\u0020les\u0020commentaires\u0020associ\u00E9s.",
             "url": "classes/App-Controller-ForumController.html#method_showSubject"
+        },                {
+            "fqsen": "\\App\\Controller\\ForumController\u003A\u003Aedit\u0028\u0029",
+            "name": "edit",
+            "summary": "Permet\u0020\u00E0\u0020un\u0020utilisateur\u0020de\u0020modifier\u0020son\u0020propre\u0020commentaire.",
+            "url": "classes/App-Controller-ForumController.html#method_edit"
         },                {
             "fqsen": "\\App\\Controller\\HomeController",
             "name": "HomeController",
-            "summary": "",
+            "summary": "Contr\u00F4leur\u0020principal\u0020pour\u0020la\u0020gestion\u0020de\u0020l\u0027accueil\u0020du\u0020site.",
             "url": "classes/App-Controller-HomeController.html"
         },                {
             "fqsen": "\\App\\Controller\\HomeController\u003A\u003Aindex\u0028\u0029",
             "name": "index",
-            "summary": "",
+            "summary": "Page\u0020d\u0027accueil\u0020du\u0020site.",
             "url": "classes/App-Controller-HomeController.html#method_index"
         },                {
             "fqsen": "\\App\\Controller\\ProfilController",
             "name": "ProfilController",
-            "summary": "",
+            "summary": "Contr\u00F4leur\u0020pour\u0020g\u00E9rer\u0020le\u0020profil\u0020utilisateur.",
             "url": "classes/App-Controller-ProfilController.html"
         },                {
             "fqsen": "\\App\\Controller\\ProfilController\u003A\u003Aindex\u0028\u0029",
             "name": "index",
-            "summary": "",
+            "summary": "Affiche\u0020la\u0020page\u0020de\u0020profil\u0020de\u0020l\u0027utilisateur\u0020avec\u0020ses\u0020commentaires.",
             "url": "classes/App-Controller-ProfilController.html#method_index"
         },                {
             "fqsen": "\\App\\Controller\\RegisterController",
             "name": "RegisterController",
-            "summary": "",
+            "summary": "Contr\u00F4leur\u0020pour\u0020g\u00E9rer\u0020l\u0027inscription\u0020des\u0020utilisateurs.",
             "url": "classes/App-Controller-RegisterController.html"
         },                {
             "fqsen": "\\App\\Controller\\RegisterController\u003A\u003A__construct\u0028\u0029",
@@ -193,17 +198,17 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Controller\\RegisterController\u003A\u003Aregister\u0028\u0029",
             "name": "register",
-            "summary": "",
+            "summary": "G\u00E8re\u0020l\u0027inscription\u0020des\u0020nouveaux\u0020utilisateurs.",
             "url": "classes/App-Controller-RegisterController.html#method_register"
         },                {
             "fqsen": "\\App\\Controller\\RegisterController\u003A\u003AverifyUserEmail\u0028\u0029",
             "name": "verifyUserEmail",
-            "summary": "",
+            "summary": "V\u00E9rifie\u0020l\u0027adresse\u0020email\u0020de\u0020l\u0027utilisateur\u0020\u00E0\u0020l\u0027aide\u0020du\u0020token\u0020fourni.",
             "url": "classes/App-Controller-RegisterController.html#method_verifyUserEmail"
         },                {
             "fqsen": "\\App\\Controller\\RegisterController\u003A\u003AconfirmEmailNotification\u0028\u0029",
             "name": "confirmEmailNotification",
-            "summary": "",
+            "summary": "Affiche\u0020une\u0020page\u0020de\u0020confirmation\u0020apr\u00E8s\u0020l\u0027inscription.",
             "url": "classes/App-Controller-RegisterController.html#method_confirmEmailNotification"
         },                {
             "fqsen": "\\App\\Controller\\RegisterController\u003A\u003A\u0024emailVerifier",
@@ -213,7 +218,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Controller\\ResetPasswordController",
             "name": "ResetPasswordController",
-            "summary": "",
+            "summary": "Contr\u00F4leur\u0020pour\u0020g\u00E9rer\u0020la\u0020r\u00E9initialisation\u0020des\u0020mots\u0020de\u0020passe.",
             "url": "classes/App-Controller-ResetPasswordController.html"
         },                {
             "fqsen": "\\App\\Controller\\ResetPasswordController\u003A\u003A__construct\u0028\u0029",
@@ -223,22 +228,22 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Controller\\ResetPasswordController\u003A\u003Arequest\u0028\u0029",
             "name": "request",
-            "summary": "",
+            "summary": "G\u00E8re\u0020la\u0020demande\u0020de\u0020r\u00E9initialisation\u0020de\u0020mot\u0020de\u0020passe.",
             "url": "classes/App-Controller-ResetPasswordController.html#method_request"
         },                {
             "fqsen": "\\App\\Controller\\ResetPasswordController\u003A\u003AcheckEmail\u0028\u0029",
             "name": "checkEmail",
-            "summary": "",
+            "summary": "Affiche\u0020une\u0020confirmation\u0020que\u0020l\u0027email\u0020de\u0020r\u00E9initialisation\u0020a\u0020\u00E9t\u00E9\u0020envoy\u00E9.",
             "url": "classes/App-Controller-ResetPasswordController.html#method_checkEmail"
         },                {
             "fqsen": "\\App\\Controller\\ResetPasswordController\u003A\u003Areset\u0028\u0029",
             "name": "reset",
-            "summary": "",
+            "summary": "G\u00E8re\u0020la\u0020r\u00E9initialisation\u0020du\u0020mot\u0020de\u0020passe.",
             "url": "classes/App-Controller-ResetPasswordController.html#method_reset"
         },                {
             "fqsen": "\\App\\Controller\\ResetPasswordController\u003A\u003AprocessSendingPasswordResetEmail\u0028\u0029",
             "name": "processSendingPasswordResetEmail",
-            "summary": "",
+            "summary": "Traite\u0020l\u0027envoi\u0020de\u0020l\u0027email\u0020de\u0020r\u00E9initialisation\u0020du\u0020mot\u0020de\u0020passe.",
             "url": "classes/App-Controller-ResetPasswordController.html#method_processSendingPasswordResetEmail"
         },                {
             "fqsen": "\\App\\Controller\\ResetPasswordController\u003A\u003A\u0024resetPasswordHelper",
@@ -253,23 +258,33 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Controller\\SecurityController",
             "name": "SecurityController",
-            "summary": "",
+            "summary": "Contr\u00F4leur\u0020pour\u0020g\u00E9rer\u0020la\u0020s\u00E9curit\u00E9\u0020\u0028connexion\u0020et\u0020d\u00E9connexion\u0029.",
             "url": "classes/App-Controller-SecurityController.html"
         },                {
             "fqsen": "\\App\\Controller\\SecurityController\u003A\u003Alogin\u0028\u0029",
             "name": "login",
-            "summary": "",
+            "summary": "G\u00E8re\u0020la\u0020connexion\u0020des\u0020utilisateurs.",
             "url": "classes/App-Controller-SecurityController.html#method_login"
         },                {
             "fqsen": "\\App\\Controller\\SecurityController\u003A\u003AloginCheck\u0028\u0029",
             "name": "loginCheck",
-            "summary": "",
+            "summary": "G\u00E8re\u0020la\u0020v\u00E9rification\u0020de\u0020la\u0020connexion\u0020\u0028intercept\u00E9e\u0020par\u0020le\u0020syst\u00E8me\u0020de\u0020s\u00E9curit\u00E9\u0029.",
             "url": "classes/App-Controller-SecurityController.html#method_loginCheck"
         },                {
             "fqsen": "\\App\\Controller\\SecurityController\u003A\u003Alogout\u0028\u0029",
             "name": "logout",
-            "summary": "",
+            "summary": "G\u00E8re\u0020la\u0020d\u00E9connexion\u0020des\u0020utilisateurs\u0020\u0028intercept\u00E9e\u0020par\u0020le\u0020syst\u00E8me\u0020de\u0020s\u00E9curit\u00E9\u0029.",
             "url": "classes/App-Controller-SecurityController.html#method_logout"
+        },                {
+            "fqsen": "\\App\\Controller\\TestEmailController",
+            "name": "TestEmailController",
+            "summary": "Contr\u00F4leur\u0020pour\u0020tester\u0020l\u0027envoi\u0020d\u0027emails\u0020via\u0020MailHog.",
+            "url": "classes/App-Controller-TestEmailController.html"
+        },                {
+            "fqsen": "\\App\\Controller\\TestEmailController\u003A\u003AtestEmail\u0028\u0029",
+            "name": "testEmail",
+            "summary": "Envoie\u0020un\u0020email\u0020de\u0020test\u0020via\u0020MailHog.",
+            "url": "classes/App-Controller-TestEmailController.html#method_testEmail"
         },                {
             "fqsen": "\\App\\DataFixtures\\AppFixtures",
             "name": "AppFixtures",
@@ -676,6 +691,16 @@ Search.appendIndex(
             "summary": "D\u00E9finit\u0020si\u0020l\u0027utilisateur\u0020est\u0020actif.",
             "url": "classes/App-Entity-User.html#method_setIsActive"
         },                {
+            "fqsen": "\\App\\Entity\\User\u003A\u003AgetEmailVerificationToken\u0028\u0029",
+            "name": "getEmailVerificationToken",
+            "summary": "R\u00E9cup\u00E8re\u0020le\u0020jeton\u0020de\u0020v\u00E9rification\u0020pour\u0020l\u0027email.",
+            "url": "classes/App-Entity-User.html#method_getEmailVerificationToken"
+        },                {
+            "fqsen": "\\App\\Entity\\User\u003A\u003AsetEmailVerificationToken\u0028\u0029",
+            "name": "setEmailVerificationToken",
+            "summary": "D\u00E9finit\u0020le\u0020jeton\u0020de\u0020v\u00E9rification\u0020pour\u0020l\u0027email.",
+            "url": "classes/App-Entity-User.html#method_setEmailVerificationToken"
+        },                {
             "fqsen": "\\App\\Entity\\User\u003A\u003AgetCreatedAt\u0028\u0029",
             "name": "getCreatedAt",
             "summary": "R\u00E9cup\u00E8re\u0020la\u0020date\u0020de\u0020cr\u00E9ation\u0020du\u0020compte.",
@@ -801,6 +826,21 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Form-ChangePasswordFormType.html#method_configureOptions"
         },                {
+            "fqsen": "\\App\\Form\\CommentType",
+            "name": "CommentType",
+            "summary": "",
+            "url": "classes/App-Form-CommentType.html"
+        },                {
+            "fqsen": "\\App\\Form\\CommentType\u003A\u003AbuildForm\u0028\u0029",
+            "name": "buildForm",
+            "summary": "",
+            "url": "classes/App-Form-CommentType.html#method_buildForm"
+        },                {
+            "fqsen": "\\App\\Form\\CommentType\u003A\u003AconfigureOptions\u0028\u0029",
+            "name": "configureOptions",
+            "summary": "",
+            "url": "classes/App-Form-CommentType.html#method_configureOptions"
+        },                {
             "fqsen": "\\App\\Form\\RegistrationForm",
             "name": "RegistrationForm",
             "summary": "",
@@ -883,7 +923,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Repository\\CategoryRepository",
             "name": "CategoryRepository",
-            "summary": "",
+            "summary": "Repository\u0020pour\u0020l\u0027entit\u00E9\u0020Category.",
             "url": "classes/App-Repository-CategoryRepository.html"
         },                {
             "fqsen": "\\App\\Repository\\CategoryRepository\u003A\u003A__construct\u0028\u0029",
@@ -893,7 +933,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Repository\\CommentRepository",
             "name": "CommentRepository",
-            "summary": "",
+            "summary": "Repository\u0020pour\u0020l\u0027entit\u00E9\u0020Comment.",
             "url": "classes/App-Repository-CommentRepository.html"
         },                {
             "fqsen": "\\App\\Repository\\CommentRepository\u003A\u003A__construct\u0028\u0029",
@@ -903,7 +943,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Repository\\ResetPasswordRequestRepository",
             "name": "ResetPasswordRequestRepository",
-            "summary": "",
+            "summary": "Repository\u0020pour\u0020l\u0027entit\u00E9\u0020ResetPasswordRequest.",
             "url": "classes/App-Repository-ResetPasswordRequestRepository.html"
         },                {
             "fqsen": "\\App\\Repository\\ResetPasswordRequestRepository\u003A\u003A__construct\u0028\u0029",
@@ -918,7 +958,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Repository\\SujetRepository",
             "name": "SujetRepository",
-            "summary": "",
+            "summary": "Repository\u0020pour\u0020l\u0027entit\u00E9\u0020Sujet.",
             "url": "classes/App-Repository-SujetRepository.html"
         },                {
             "fqsen": "\\App\\Repository\\SujetRepository\u003A\u003A__construct\u0028\u0029",
@@ -933,7 +973,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Repository\\UserRepository",
             "name": "UserRepository",
-            "summary": "",
+            "summary": "Repository\u0020pour\u0020l\u0027entit\u00E9\u0020User.",
             "url": "classes/App-Repository-UserRepository.html"
         },                {
             "fqsen": "\\App\\Repository\\UserRepository\u003A\u003A__construct\u0028\u0029",
@@ -943,7 +983,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Security\\EmailVerifier",
             "name": "EmailVerifier",
-            "summary": "",
+            "summary": "Service\u0020pour\u0020la\u0020v\u00E9rification\u0020des\u0020emails\u0020des\u0020utilisateurs.",
             "url": "classes/App-Security-EmailVerifier.html"
         },                {
             "fqsen": "\\App\\Security\\EmailVerifier\u003A\u003A__construct\u0028\u0029",
@@ -953,7 +993,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Security\\EmailVerifier\u003A\u003AsendEmailConfirmation\u0028\u0029",
             "name": "sendEmailConfirmation",
-            "summary": "",
+            "summary": "Envoie\u0020un\u0020email\u0020de\u0020confirmation\u0020d\u0027adresse\u0020email\u0020\u00E0\u0020l\u0027utilisateur.",
             "url": "classes/App-Security-EmailVerifier.html#method_sendEmailConfirmation"
         },                {
             "fqsen": "\\App\\Security\\EmailVerifier\u003A\u003A\u0024verifyEmailHelper",
@@ -968,7 +1008,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Security\\SecurityControllerAuthenticator",
             "name": "SecurityControllerAuthenticator",
-            "summary": "",
+            "summary": "Authenticator\u0020personnalis\u00E9\u0020pour\u0020g\u00E9rer\u0020l\u0027authentification\u0020des\u0020utilisateurs.",
             "url": "classes/App-Security-SecurityControllerAuthenticator.html"
         },                {
             "fqsen": "\\App\\Security\\SecurityControllerAuthenticator\u003A\u003A__construct\u0028\u0029",

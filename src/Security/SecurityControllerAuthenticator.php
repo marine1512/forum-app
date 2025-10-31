@@ -13,6 +13,9 @@ use Symfony\Component\Security\Http\Authenticator\Passport\Credentials\PasswordC
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 
+/**
+ * Authenticator personnalisé pour gérer l'authentification des utilisateurs.
+ */
 class SecurityControllerAuthenticator extends AbstractLoginFormAuthenticator
 {
     private UrlGeneratorInterface $urlGenerator;

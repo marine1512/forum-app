@@ -6,6 +6,9 @@ use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Mailer\MailerInterface;
 use SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface;
 
+/**
+ * Service pour la vérification des emails des utilisateurs.
+ */
 class EmailVerifier
 {
     private VerifyEmailHelperInterface $verifyEmailHelper;
@@ -17,6 +20,14 @@ class EmailVerifier
         $this->mailer = $mailer;
     }
 
+    /** 
+     * Envoie un email de confirmation d'adresse email à l'utilisateur.
+     *
+     * @param string $verifyEmailRouteName Le nom de la route pour la vérification de l'email.
+     * @param mixed $user L'utilisateur à qui envoyer l'email.
+     * @param TemplatedEmail $email L'email templatisé à envoyer.
+     * @return void
+     */
     public function sendEmailConfirmation(string $verifyEmailRouteName, $user, TemplatedEmail $email): void
     {
         $signatureComponents = $this->verifyEmailHelper->generateSignature(

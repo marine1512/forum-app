@@ -18,6 +18,9 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Uid\Uuid;
 
+/**
+ * Contrôleur pour gérer l'inscription des utilisateurs.
+ */
 class RegisterController extends AbstractController
 {
     private EmailVerifier $emailVerifier;
@@ -27,6 +30,15 @@ class RegisterController extends AbstractController
         $this->emailVerifier = $emailVerifier;
     }
 
+    /** 
+     * Gère l'inscription des nouveaux utilisateurs.
+     *
+     * @Route("/register", name="app_register")
+     * @param Request $request La requête HTTP.
+     * @param UserPasswordHasherInterface $userPasswordHasher Le service de hachage de mot de passe.
+     * @param EntityManagerInterface $entityManager Le gestionnaire d'entités pour la persistance des données.
+     * @return Response La réponse HTTP contenant la vue d'inscription ou une redirection.
+     */
     #[Route('/register', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
@@ -69,41 +81,58 @@ class RegisterController extends AbstractController
         ]);
     }
     
+    /** 
+     * Vérifie l'adresse email de l'utilisateur à l'aide du token fourni.
+     * 
+     * @Route("/verify/email", name="app_verify_email")
+     * 
+     * @param Request $request La requête HTTP.
+     * @param EntityManagerInterface $entityManager Le gestionnaire d'entités pour la persistance des données.
+     * @param UserAuthenticatorInterface $userAuthenticator Le service d'authentification des utilisateurs.
+     * @param FormLoginAuthenticator $authenticator L'authentificateur de connexion par formulaire.
+     * @return Response La réponse HTTP après la vérification.
+     */
     #[Route('/verify/email', name: 'app_verify_email')]
    public function verifyUserEmail(Request $request, EntityManagerInterface $entityManager, UserAuthenticatorInterface $userAuthenticator, FormLoginAuthenticator $authenticator): Response
-{
-    $token = $request->query->get('token');
+    {
+        $token = $request->query->get('token');
 
-    if (!$token) {
-        throw $this->createNotFoundException('Token non fourni pour la vérification.');
+        if (!$token) {
+            throw $this->createNotFoundException('Token non fourni pour la vérification.');
+        }
+
+        $user = $entityManager->getRepository(User::class)->findOneBy(['emailVerificationToken' => $token]);
+
+        if (!$user) {
+            throw $this->createNotFoundException('Aucun utilisateur trouvé pour ce token.');
+        }
+        if (!$user->isVerified()) {
+            $user->setIsVerified(true);
+            $user->setIsActive(true);
+            $user->setEmailVerificationToken(null); 
+            $entityManager->flush(); 
+        }
+        try {
+            return $userAuthenticator->authenticateUser(
+                $user,
+                $authenticator,
+                $request
+            );
+        } catch (AuthenticationException $e) {
+            $this->addFlash('error', 'Une erreur est survenue lors de l\'authentification automatique.');
+            return $this->redirectToRoute('app_login'); 
+        }
+
+        $this->addFlash('success', 'Votre email a été confirmé avec succès et vous êtes maintenant connecté.');
+        return $this->redirectToRoute('home'); 
     }
 
-    $user = $entityManager->getRepository(User::class)->findOneBy(['emailVerificationToken' => $token]);
-
-    if (!$user) {
-        throw $this->createNotFoundException('Aucun utilisateur trouvé pour ce token.');
-    }
-    if (!$user->isVerified()) {
-        $user->setIsVerified(true);
-        $user->setIsActive(true);
-        $user->setEmailVerificationToken(null); 
-        $entityManager->flush(); 
-    }
-    try {
-        return $userAuthenticator->authenticateUser(
-            $user,
-            $authenticator,
-            $request
-        );
-    } catch (AuthenticationException $e) {
-        $this->addFlash('error', 'Une erreur est survenue lors de l\'authentification automatique.');
-        return $this->redirectToRoute('app_login'); 
-    }
-
-    $this->addFlash('success', 'Votre email a été confirmé avec succès et vous êtes maintenant connecté.');
-    return $this->redirectToRoute('home'); 
-}
-
+    /** 
+     * Affiche une page de confirmation après l'inscription.
+     *
+     * @Route("/register/confirmation", name="app_register_confirmation")
+     * @return Response La réponse HTTP contenant la vue de confirmation.
+     */
     #[Route('/register/confirmation', name: 'app_register_confirmation')]
 
     public function confirmEmailNotification(): Response
