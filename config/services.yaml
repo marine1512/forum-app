@@ -9,7 +9,11 @@ services:
         alias: 'security.authenticator.form_login.main'
 
     App\:
-        resource: '../src/'
+        resource: '../src/*'
+
+    App\Controller\:
+        resource: '../src/Controller'
+        tags: ['controller.service_arguments']
     App\Command\:
         resource: '../src/Command'
         tags: ['console.command']

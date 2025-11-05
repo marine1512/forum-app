@@ -30,7 +30,7 @@ class HomeController extends AbstractController
      * @return Response Retourne la réponse contenant la vue Twig pour l'affichage de la page d'accueil.
      */
     #[Route('/', name: 'home')]
-    public function index(UserRepository $userRepository, \Doctrine\ORM\EntityManagerInterface $entityManager): Response
+    public function index(\Doctrine\ORM\EntityManagerInterface $entityManager): Response
     {
         // Récupération du dépôt pour l'entité "Sujet".
         $repo = $entityManager->getRepository(Sujet::class);
@@ -41,8 +41,6 @@ class HomeController extends AbstractController
         // Vérifie si l'utilisateur est authentifié.
         $isUserLoggedIn = $this->isGranted('IS_AUTHENTICATED_FULLY');
 
-        // Récupération des 3 derniers membres inscrits.
-        $lastMembers = $userRepository->findBy([], ['id' => 'DESC'], 3);
 
         // Récupération des 2 derniers sujets ajoutés, triés par date de création.
         $dernieresNouveautes = $entityManager->getRepository(\App\Entity\Sujet::class)
@@ -55,7 +53,6 @@ class HomeController extends AbstractController
         return $this->render('home/index.html.twig', [
             'user' => $user,
             'isUserLoggedIn' => $isUserLoggedIn,
-            'last_members' => $lastMembers,
             'dernieresNouveautes' => $dernieresNouveautes,
             'topDiscussed' => $topDiscussed,
         ]);

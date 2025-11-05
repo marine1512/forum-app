@@ -37,6 +37,15 @@ class UserFixtures extends Fixture
                 'is_active' => true,
                 'email_verification_token' => null,
             ],
+                        [
+                'username' => 'MickeyRules',
+                'email' => 'm.rules@mail.com',
+                'roles' => ['ROLE_USER'],
+                'password' => 'mickey', 
+                'is_verified' => true,
+                'is_active' => true,
+                'email_verification_token' => null,
+            ],
         ];
 
         foreach ($users as $userData) {

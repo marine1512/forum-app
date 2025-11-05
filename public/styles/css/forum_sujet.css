@@ -129,6 +129,19 @@ a .bouton-forum {
     width: 7em;
 }
 
+.bouton3{
+    background-color: #FFE893;
+    margin: auto;
+    width: fit-content;
+    color: #000;
+    text-decoration: none;
+    border: 2px solid #5A86A1;
+    border-radius: 15px;
+    padding: 6px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
 .modifier {
     display: inline-flex;
     padding: 2px 5px;

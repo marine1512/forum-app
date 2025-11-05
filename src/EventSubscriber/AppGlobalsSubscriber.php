@@ -3,9 +3,11 @@
 namespace App\EventSubscriber;
 
 use App\Repository\UserRepository;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Twig\Environment;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Event\ControllerEvent;
+use Symfony\Component\HttpKernel\KernelEvents;
 
 class AppGlobalsSubscriber implements EventSubscriberInterface
 {
@@ -22,13 +24,15 @@ class AppGlobalsSubscriber implements EventSubscriberInterface
     {
         // Charger et injecter les données globales
         $nbMembers = $this->userRepository->count([]);
+
+        // Ajouter la variable Twig globale
         $this->twig->addGlobal('nbMembers', $nbMembers);
     }
 
     public static function getSubscribedEvents(): array
     {
         return [
-            ControllerEvent::class => 'onControllerEvent',
+            KernelEvents::CONTROLLER => 'onControllerEvent',
         ];
     }
 }
