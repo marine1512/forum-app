@@ -1,4 +1,6 @@
 security:
+    role_hierarchy:
+        ROLE_ADMIN: [ROLE_USER] # Les administrateurs héritent des privilèges des utilisateurs standard
     password_hashers:
         App\Entity\User:
             algorithm: auto
@@ -35,7 +37,7 @@ security:
         - { path: ^/reset-password, roles: PUBLIC_ACCESS }
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/profil, roles: ROLE_USER }
-        - { path: ^/forum, roles: ROLE_USER }
+        - { path: ^/forum, roles: ROLE_USER }        
 
 when@test:
     security:

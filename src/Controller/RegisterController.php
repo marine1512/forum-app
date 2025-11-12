@@ -17,6 +17,7 @@ use Symfony\Component\Mime\Address;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Uid\Uuid;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 /**
  * Contrôleur pour gérer l'inscription des utilisateurs.
@@ -33,7 +34,6 @@ class RegisterController extends AbstractController
     /** 
      * Gère l'inscription des nouveaux utilisateurs.
      *
-     * @Route("/register", name="app_register")
      * @param Request $request La requête HTTP.
      * @param UserPasswordHasherInterface $userPasswordHasher Le service de hachage de mot de passe.
      * @param EntityManagerInterface $entityManager Le gestionnaire d'entités pour la persistance des données.
@@ -59,6 +59,14 @@ class RegisterController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
+            $emailVerificationUrl = $this->generateUrl(
+            'app_verify_email', // Nom de la route
+            ['token' => $emailVerificationToken], // Paramètres de la route
+            UrlGeneratorInterface::ABSOLUTE_URL // URL absolue
+);
+
+            $htmlEmailVerificationUrl = htmlspecialchars($emailVerificationUrl);
+
             $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
                 (new TemplatedEmail())
                     ->from(new Address('mignomarine@gmail.com', 'Mail Bot'))
@@ -67,10 +75,11 @@ class RegisterController extends AbstractController
                     ->html(
                         '<h1>Bienvenue sur notre application !</h1>' .
                         '<p>Merci de vous être inscrit. Veuillez confirmer votre adresse email en cliquant sur le lien suivant :</p>' .
-                        '<a href="http://127.0.0.1:8000/verify/email?token=' . $emailVerificationToken . '">Confirmer mon adresse</a>'
+                        '<a href="' . $htmlEmailVerificationUrl . '">Confirmer mon adresse</a>'
                     )
             );
         
+
             $this->addFlash('success', 'Un email de confirmation a été envoyé. Veuillez vérifier votre boîte de réception.');
         
             return $this->redirectToRoute('app_register_confirmation');
@@ -84,7 +93,6 @@ class RegisterController extends AbstractController
     /** 
      * Vérifie l'adresse email de l'utilisateur à l'aide du token fourni.
      * 
-     * @Route("/verify/email", name="app_verify_email")
      * 
      * @param Request $request La requête HTTP.
      * @param EntityManagerInterface $entityManager Le gestionnaire d'entités pour la persistance des données.
@@ -92,7 +100,7 @@ class RegisterController extends AbstractController
      * @param FormLoginAuthenticator $authenticator L'authentificateur de connexion par formulaire.
      * @return Response La réponse HTTP après la vérification.
      */
-    #[Route('/verify/email', name: 'app_verify_email')]
+    #[Route('/verify-email', name: 'app_verify_email')]
    public function verifyUserEmail(Request $request, EntityManagerInterface $entityManager, UserAuthenticatorInterface $userAuthenticator, FormLoginAuthenticator $authenticator): Response
     {
         $token = $request->query->get('token');

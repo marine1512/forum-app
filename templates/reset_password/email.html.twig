@@ -1,22 +1,18 @@
-{% extends 'base.html.twig' %}
-
-{% block stylesheets %}
-{{ parent() }}
-   <link rel="stylesheet" href="{{ asset('styles/css/form.css') }}?v=1.0">
-{% endblock %}
-
 {% block body %}
-    <img src="{{ asset('images/mickey-formulaire.png') }}" alt="formulaire en forme de mickey" class="image_mickey">
-
-    <div class='form-mickey'>
-        <h1>Bonjour !</h1>
-
+        <h1>Bonjour {{ user.firstName|default('utilisateur') }} !</h1>
+        <br>
         <p>Pour réinitialiser votre mot de passe, veuillez cliquer sur le lien suivant :</p>
-
+        <br>
         <a href="{{ url('reset-password_app_reset_password', {token: resetToken.token}) }}">
-            {{ url('reset-password_app_reset_password', {token: resetToken.token}) }}
+            Réinitialiser mon mot de passe
         </a>
-
+        <br>
+        <br>
         <p>Ce lien expirera dans {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.</p>
-    </div>
+        <br>
+        <br>
+        <p>Si vous n'avez pas demandé cette réinitialisation, vous pouvez ignorer cet e-mail.</p>
+        <br>
+        <br>
+        <p>Cordialement,<br>L'équipe de Fan de Lore</p>
 {% endblock %}

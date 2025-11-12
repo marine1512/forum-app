@@ -102,11 +102,11 @@ h2 , h1{
     justify-content: center;
 }
 /* Couleurs par catégorie */
-.category-6.active { background-color: #AED3EA; } 
-.category-7.active { background-color: #FFE893; } 
-.category-8.active { background-color: #dcb5a6; } 
-.category-9.active { background-color: #4b7792; } 
-.category-10.active { background-color: #FFE893; }
+.category-1.active { background-color: #AED3EA; } 
+.category-2.active { background-color: #FFE893; } 
+.category-3.active { background-color: #dcb5a6; } 
+.category-4.active { background-color: #4b7792; } 
+.category-5.active { background-color: #FFE893; }
 
 .troisieme-bloc-forum ul {
     list-style: none;
@@ -129,11 +129,11 @@ h2 , h1{
     margin-right: 1em;
 }
 
-.categorie-6 .icone { color: #AED3EA !important; } 
-.categorie-7 .icone { color: #FFE893 !important; } 
-.categorie-8 .icone { color: #dcb5a6 !important; } 
-.categorie-9 .icone { color: #4b7792 !important; } 
-.categorie-10 .icone { color: #FFE893 !important; }
+.categorie-1 .icone { color: #AED3EA !important; } 
+.categorie-2 .icone { color: #FFE893 !important; } 
+.categorie-3 .icone { color: #dcb5a6 !important; } 
+.categorie-4 .icone { color: #4b7792 !important; } 
+.categorie-5 .icone { color: #FFE893 !important; }
 
 
 

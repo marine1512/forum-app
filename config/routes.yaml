@@ -5,4 +5,4 @@ controllers:
     type: attribute
 app_verify_email:
     path: /verify-email
-    controller: App\Controller\VerifyEmailController::verify
+    controller: App\Controller\RegisterController::verifyUserEmail

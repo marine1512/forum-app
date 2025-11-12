@@ -25,3 +25,6 @@ services:
     App\EventSubscriber\AppGlobalsSubscriber:
         autowire: true
         autoconfigure: true 
+
+    App\Command\TestEmailCommand:
+        tags: ['console.command']

@@ -9,7 +9,7 @@
 
 {% block body %}
 
-
+<div class="mickey">
     <img src="{{ asset('images/mickey-formulaire.png') }}" alt="formulaire en forme de mickey" class="image_mickey">
 
     <div class='form-mickey'>
@@ -17,9 +17,10 @@
 
     {{ form_start(resetForm) }}
         {{ form_row(resetForm.plainPassword, {
-            'label': 'Nouveau mot de passe'
+    'label': 'Nouveau mot de passe'|trans
         }) }}
         <button class="bouton2">Mettre à jour le mot de passe</button>
     {{ form_end(resetForm) }}
     </div>
+</div>
 {% endblock %}

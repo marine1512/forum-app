@@ -105,14 +105,14 @@ class AdminController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             // Récupère le MDp en clair depuis le champ non mappé
-            $plainPassword = $form->get('plainPassword')->getData();
+            $password = $form->get('password')->getData();
 
             // Sécurité : double-check si jamais non soumis
-            if ($plainPassword === null || $plainPassword === '') {
+            if ($password === null || $password === '') {
                 $this->addFlash('error', 'Le mot de passe est requis.');
             } else {
                 // Hash + set sur la propriété mappée "password"
-                $hashed = $passwordHasher->hashPassword($user, $plainPassword);
+                $hashed = $passwordHasher->hashPassword($user, $password);
                 $user->setPassword($hashed);
 
                 $em->persist($user);

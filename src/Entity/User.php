@@ -19,7 +19,7 @@ use Doctrine\Common\Collections\Collection;
  * (comme ses commentaires).
  */
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-#[ORM\Table(name: "user")]
+#[ORM\Table(name: "`user`")]
 #[UniqueEntity(fields: ['username'], message: 'Il existe déjà un compte avec cet identifiant.')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
