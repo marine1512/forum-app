@@ -14,6 +14,12 @@ class CategoryType extends AbstractType
         $builder
             ->add('name', null, [
                 'label' => 'Nom de la categorie : ',
+                'required' => true,
+                'constraints' => [
+                    new \Symfony\Component\Validator\Constraints\NotBlank([
+                        'message' => 'Le nom de la catégorie ne peut pas être vide.',
+                    ]),
+                ],
             ]);
     }
 

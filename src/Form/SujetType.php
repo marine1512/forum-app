@@ -16,6 +16,12 @@ class SujetType extends AbstractType
         $builder
             ->add('name', null, [
                 'label' => 'Nom du sujet : ',
+                'required' => true,
+                'constraints' => [
+                    new \Symfony\Component\Validator\Constraints\NotBlank([
+                        'message' => 'Le nom du sujet ne peut pas être vide.',
+                    ]),
+                ],
             ])
             ->add('category', EntityType::class, [
                 'class' => Category::class,

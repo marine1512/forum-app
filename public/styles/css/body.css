@@ -47,14 +47,15 @@ h2{
 }
 
 .image_mickey {
-  width: 100%;
-  display: block;
+    width: 100%;
+    display: block;
 }
 
 .membre-mickey {
     position: absolute;
-    right: 3em;
-    bottom: 1em;
+    top: 60%;
+    left: 42%;
+    transform: translate(-50%, -50%);
 }
 .membre-mickey ul li {
     list-style: none;

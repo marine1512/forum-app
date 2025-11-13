@@ -4,6 +4,10 @@ security:
     password_hashers:
         App\Entity\User:
             algorithm: auto
+            cost: 12
+        Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface:
+            algorithm: auto
+            cost: 12
 
     providers:
         app_user_provider:
@@ -44,6 +48,6 @@ when@test:
         password_hashers:
             Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface:
                 algorithm: auto
-                cost: 
+                cost: 12
                 time_cost:
                 memory_cost: 10 

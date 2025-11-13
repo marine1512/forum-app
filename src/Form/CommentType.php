@@ -15,6 +15,17 @@ class CommentType extends AbstractType
         $builder
             ->add('text', TextareaType::class, [
                 'label' => 'Modifier votre commentaire',
+                'constraints' => [
+                    new \Symfony\Component\Validator\Constraints\NotBlank([
+                        'message' => 'Le commentaire ne peut pas être vide.',
+                    ]),
+                    new \Symfony\Component\Validator\Constraints\Length([
+                        'min' => 5,
+                        'minMessage' => 'Le commentaire doit comporter au moins {{ limit }} caractères.',
+                        'max' => 2000,
+                        'maxMessage' => 'Le commentaire ne peut pas dépasser {{ limit }} caractères.',
+                    ]),
+                ],
             ]);
     }
 

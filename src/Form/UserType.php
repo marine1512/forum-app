@@ -19,9 +19,21 @@ class UserType extends AbstractType
         $builder
             ->add('username', TextType::class, [
                 'label' => 'Pseudo : ',
+                'constraints' => [
+                    new NotBlank(message: 'Merci de saisir un pseudo.'),
+                    new Length(
+                        min: 3,
+                        max: 50,
+                        minMessage: 'Votre pseudo doit comporter au moins {{ limit }} caractères.',
+                        maxMessage: 'Votre pseudo ne peut pas dépasser {{ limit }} caractères.'
+                    ),
+                ],
             ])
             ->add('email', EmailType::class, [
                 'label' => 'Adresse Email : ',
+                'constraints' => [
+                    new NotBlank(message: 'Merci de saisir une adresse email.'),
+                ],
             ])
             ->add('password', PasswordType::class, [
                 'label'       => 'Mot de passe : ',
