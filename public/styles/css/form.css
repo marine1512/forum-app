@@ -138,11 +138,20 @@ form label {
 /* Si tu ne peux pas modifier le HTML tout de suite, au minimum: */
 
 @media (max-width: 800px){
-  .form-mickey { font-size: .8rem; }
+  .form-mickey { font-size: .8rem; }  
 }
 @media (max-width: 737px){
+  .image_mickey{
+    width: 110%;
+  }
   .form-mickey { font-size: .6rem; }
   .form-mickey input {
     height: 1em;
 }
+}
+@media (max-width: 600px){
+  .form-mickey h2 {
+    font-size: 2em;
+  }
+
 }
